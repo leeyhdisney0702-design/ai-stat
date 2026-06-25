@@ -1,0 +1,28 @@
+# Source materials and large originals
+source/
+textbook/
+*.pdf
+
+# Local server/runtime state
+*.pid
+*.port
+server.pid
+server-*.pid
+.server-state
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.log
+*.cache
+
+# OS/editor artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*
+
+# Generated deployment staging
+_site/

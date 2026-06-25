@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>統計學互動式 HTML 教材</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="topbar">
+      <a class="brand" href="index.html">統計學互動式教材</a>
+      <nav class="topnav" aria-label="主要導覽">
+        <a href="chapter-01-introduction.html">第 1 章</a>
+        <a href="chapter-02-statistical-charts.html">第 2 章</a>
+        <button type="button" onclick="toggleSidebar('lesson-layout')">顯示/隱藏目錄</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="layout" id="lesson-layout">
+    <aside class="sidebar">
+      <h2>教材導覽</h2>
+      <a href="#intro">教材簡介</a>
+      <a href="#chapters">章節清單</a>
+      <a href="#usage">使用說明</a>
+      <a href="#sequence">建議順序</a>
+    </aside>
+
+    <main>
+      <section class="hero" id="intro">
+        <p class="eyebrow">課程入口</p>
+        <h1>統計學互動式 HTML 教材</h1>
+        <p>本教材以統計學課程的學習順序編排，提供適合課堂投影與學生自學的互動式網頁。每章會包含學習目標、核心內容、專有名詞解釋、公式說明、範例解析、練習題、答案與重點整理。</p>
+        <p class="muted">目前已完成：第 1 章導論、第 2 章統計圖表。後續章節會依同一套教材格式擴充。</p>
+      </section>
+
+      <section class="content-section" id="chapters">
+        <h2>章節清單</h2>
+        <ul class="chapter-list">
+          <li class="chapter-card">
+            <a href="chapter-01-introduction.html">第 1 章 導論</a>
+            <p>認識統計學、統計流程、敘述統計與推論統計、母體與樣本。</p>
+          </li>
+          <li class="chapter-card">
+            <a href="chapter-02-statistical-charts.html">第 2 章 統計圖表</a>
+            <p>學習資料型態、衡量尺度、資料蒐集方法與圖表選擇。</p>
+          </li>
+          <li class="chapter-card">
+            <span class="muted">第 3 章 統計測量數</span>
+            <p class="muted">待製作。</p>
+          </li>
+          <li class="chapter-card">
+            <span class="muted">第 4 章 機率論</span>
+            <p class="muted">待製作。</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="content-section" id="usage">
+        <h2>使用說明</h2>
+        <ol>
+          <li>正式版本可直接透過 GitHub Pages 網址開啟，不需要安裝 Python 或啟動本機伺服器。</li>
+          <li>本機開發時可用任一靜態檔案伺服器預覽，但頁面連結與資源路徑皆使用相對路徑。</li>
+          <li>頁面左側有導覽目錄，可快速跳到指定區塊；右上方可顯示或隱藏目錄。</li>
+          <li>練習題答案預設隱藏，點擊「顯示答案」即可檢查。</li>
+          <li>互動題可即時回饋，適合課堂提問或學生自我檢核。</li>
+        </ol>
+      </section>
+
+      <section class="summary-box" id="sequence">
+        <h2>建議上課順序</h2>
+        <p>先從第 1 章建立統計推論的基本語言，再進入第 2 章學會辨識資料類型與選擇圖表。確認樣板後，再擴充第 3 章統計測量數與後續推論章節。</p>
+      </section>
+    </main>
+  </div>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

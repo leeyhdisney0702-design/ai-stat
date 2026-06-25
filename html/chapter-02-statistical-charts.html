@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第 2 章 統計圖表 | 統計學互動式教材</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="topbar">
+      <a class="brand" href="index.html">統計學互動式教材</a>
+      <nav class="topnav" aria-label="主要導覽">
+        <a href="index.html">首頁</a>
+        <a href="chapter-01-introduction.html">上一章</a>
+        <button type="button" onclick="toggleSidebar('lesson-layout')">顯示/隱藏目錄</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="layout" id="lesson-layout">
+    <aside class="sidebar">
+      <h2>第 2 章</h2>
+      <a href="#objectives">學習目標</a>
+      <a href="#map">本章地圖</a>
+      <a href="#concepts">核心內容</a>
+      <a href="#terms">名詞解釋</a>
+      <a href="#formula">公式說明</a>
+      <a href="#examples">範例解析</a>
+      <a href="#practice">互動練習</a>
+      <a href="#homework">課堂練習</a>
+      <a href="#quiz">自我測驗</a>
+      <a href="#summary">重點整理</a>
+    </aside>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Chapter 2</p>
+        <h1>第 2 章 統計圖表</h1>
+        <p>本章整理「統計圖表」的主要內容。重點是先判斷資料型態與衡量尺度，再選擇合適的資料蒐集方式與統計圖表，而不是直接套用圖形。</p>
+      </section>
+
+      <section class="lesson-objectives" id="objectives">
+        <h2>學習目標</h2>
+        <ol>
+          <li>說明變數的意義。</li>
+          <li>區分屬質資料與屬量資料。</li>
+          <li>判斷間斷資料與連續資料。</li>
+          <li>辨識名目、順序、區間、比例四種衡量尺度。</li>
+          <li>依資料型態選擇合適的統計圖表。</li>
+        </ol>
+      </section>
+
+      <section class="chapter-map" id="map">
+        <h2>本章地圖</h2>
+        <p>本章的學習順序是：先說明為何統計需要把研究對象量化，再定義變數；接著把資料分成屬質與屬量，並介紹四種衡量尺度；之後說明調查、觀察與實驗三種資料蒐集方法；最後依單一變數或兩個變數、屬質或屬量，選擇合適圖表。</p>
+      </section>
+
+      <section class="concept-box">
+        <h2>課前導入</h2>
+        <p>如果把「墾丁」編碼為 1、「阿里山」編碼為 2，這個 2 並不代表比 1 大；但若宿營天數是 4、5、6 天，數字大小就有實際意義。統計圖表的第一步不是畫圖，而是先弄清楚資料裡的數字代表什麼。</p>
+      </section>
+
+      <section class="concept-box" id="concepts">
+        <h2>核心內容</h2>
+        <h3>2-1 資料的型態：從問題到變數</h3>
+        <p>統計方法常需要用數學方式分析問題，因此必須先把研究對象轉成可以記錄的形式。這些被量化或被分類的分析對象稱為<strong>變數</strong>。判斷一個特徵是否是變數，關鍵在於它會不會隨觀察對象不同而改變。</p>
+        <p>例如財金系系學會想決定迎新宿營地點與天數。每位同學支持的地點可能不同，所以「宿營地點」是變數；偏好的宿營天數可能不同，所以「宿營天數」也是變數；投票同學的性別也可能不同，因此也可以是變數。</p>
+        <p>好的變數定義會影響後續分析。地點用 1 代表墾丁、2 代表阿里山，只是分類代號；但天數若定義為 4、5、6，數字大小直接代表天數長短。若把 4 天定為 1、6 天定為 2、5 天定為 3，雖然仍可區分類別，卻會讓數字順序與真實意義不一致，容易造成分析與解讀錯誤。</p>
+
+        <h3>資料種類：屬質與屬量</h3>
+        <table>
+          <thead><tr><th>資料型態</th><th>定義重點</th><th>例子</th><th>教學提醒</th></tr></thead>
+          <tbody>
+            <tr><td>屬質性資料<br><span class="muted">Qualitative / categorical</span></td><td>觀察值代表組別，不具數字大小意義。</td><td>性別、國籍、學歷、宿營地點、手機品牌。</td><td>即使以 1、2、3 編碼，也只是代號，不可直接做大小比較。</td></tr>
+            <tr><td>屬量性資料<br><span class="muted">Quantitative / numerical</span></td><td>觀察值有順序性，數字大小本身有意義。</td><td>身高、體重、年齡、所得、人數、時間、氣溫。</td><td>可進一步分為間斷資料與連續資料。</td></tr>
+            <tr><td>間斷資料<br><span class="muted">Discrete</span></td><td>觀察值可以一個一個數，任兩個可能值之間不一定還有可能值。</td><td>人數、件數、次數。</td><td>169 人與 170 人之間沒有 169.5 人。</td></tr>
+            <tr><td>連續資料<br><span class="muted">Continuous</span></td><td>可能值不可計數，兩個值之間仍可存在其他值。</td><td>身高、體重、時間、氣溫、雨量。</td><td>169 公分與 170 公分之間可以有 169.5 公分。</td></tr>
+          </tbody>
+        </table>
+
+        <h3>衡量尺度：數字到底能做什麼？</h3>
+        <p><strong>衡量</strong>是將資料特質量化，以數字代表研究對象；這個動作也稱為<strong>編碼</strong>。衡量尺度決定我們可以如何解讀數字，以及後續能不能做加減乘除等運算。</p>
+        <table>
+          <thead><tr><th>尺度</th><th>意義</th><th>例子與說明</th></tr></thead>
+          <tbody>
+            <tr><td>名目尺度<br><span class="muted">Nominal</span></td><td>數字只用來辨識或歸類，沒有大小之分。</td><td>男=1、女=2，不代表女大於男；墾丁=1、阿里山=2，也只是地點代號。</td></tr>
+            <tr><td>順序尺度<br><span class="muted">Ordinal</span></td><td>可表示等級或順序，但相鄰等級的差距不一定相等。</td><td>「並不想、有點想、非常想」可排序，但 1 到 2 的差距未必等於 2 到 3 的差距。</td></tr>
+            <tr><td>區間尺度<br><span class="muted">Interval</span></td><td>差距有意義，可做加減，但 0 不代表完全沒有。</td><td>攝氏 0 度不是沒有溫度；李克特量表常被視為相鄰差距相等。</td></tr>
+            <tr><td>比例尺度<br><span class="muted">Ratio</span></td><td>差距與倍數都有意義，0 具有絕對意義。</td><td>所得、銷售額、人數、距離。0 元代表沒有錢，0 人代表沒有人。</td></tr>
+          </tbody>
+        </table>
+        <p class="source-note">區間尺度與比例尺度最大的差異在於 0 的意義。溫度的攝氏 0 度可以換成華氏 32 度，因此 0 不是絕對基準；但金額、人數、距離的 0 不能任意平移，因為 0 代表「沒有」。</p>
+
+        <h3>2-2 資料蒐集的方法</h3>
+        <p>資料取得是統計分析的第一步。常見的資料蒐集方式包含調查、觀察與實驗。</p>
+        <table>
+          <thead><tr><th>方法</th><th>定義</th><th>迎新宿營例子</th></tr></thead>
+          <tbody>
+            <tr><td>調查<br><span class="muted">Survey</span></td><td>不控制研究對象的條件，直接蒐集資料。可分普查與抽樣調查。</td><td>詢問學生對宿營地點或天數的意願。</td></tr>
+            <tr><td>普查<br><span class="muted">Census</span></td><td>對母體中每一個元素蒐集資料。</td><td>詢問所有大一新生的宿營意願。</td></tr>
+            <tr><td>抽樣調查<br><span class="muted">Sampling</span></td><td>只選取母體中一部分元素進行調查。</td><td>只在某班微積分課堂調查一部分大一學生。</td></tr>
+            <tr><td>觀察<br><span class="muted">Observation</span></td><td>研究者只觀察並記錄，不直接控制或介入。</td><td>學會幹部旁聽各班班會討論狀況。</td></tr>
+            <tr><td>實驗<br><span class="muted">Experiment</span></td><td>控制某些條件或因素，再觀察反應。</td><td>先宣布可能去墾丁觀察反應，再改成阿里山觀察反應。</td></tr>
+          </tbody>
+        </table>
+
+        <h3>2-3 統計圖表的種類</h3>
+        <p>圖表分類同時考慮兩件事：第一，變數是屬質或屬量；第二，研究的是單一變數或兩個變數。圖表的目標是讓資料更容易辨讀，而不是讓頁面更漂亮。</p>
+        <table>
+          <thead><tr><th>情況</th><th>適合圖表</th><th>用途說明</th></tr></thead>
+          <tbody>
+            <tr><td>單一屬質變數</td><td>摘要表、長條圖、圓餅圖、Pareto 圖</td><td>呈現各類別的人數、比例或排序。</td></tr>
+            <tr><td>單一屬量變數</td><td>排序、莖葉圖、次數分配表、直方圖、折線圖、累積次數多邊形圖</td><td>呈現數值資料的分布、集中位置與累積情況。</td></tr>
+            <tr><td>兩個屬質變數</td><td>列聯表或交叉表</td><td>觀察兩個分類變數之間的交叉次數，例如性別與手機品牌。</td></tr>
+            <tr><td>兩個屬量變數</td><td>散佈圖</td><td>觀察兩個數值變數是否有線性或非線性關係。</td></tr>
+            <tr><td>時間資料</td><td>時間序列圖</td><td>觀察某個數值隨時間變化的趨勢。</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="concept-box" id="terms">
+        <h2>專有名詞解釋</h2>
+        <h3>2-1 資料的型態</h3>
+        <ul class="term-list">
+          <li><strong>變數 Variable：</strong>觀察值會隨研究對象不同而改變的特徵。例如地點、天數、身高、所得。</li>
+          <li><strong>編碼 Coding：</strong>用數字代表資料特質的動作。編碼後的數字不一定具有大小意義。</li>
+          <li><strong>屬質資料 Qualitative / categorical data：</strong>代表類別或組別的資料，例如品牌、性別、國籍。</li>
+          <li><strong>屬量資料 Quantitative / numerical data：</strong>數值大小本身有意義的資料，例如年齡、金額、時間。</li>
+          <li><strong>間斷資料 Discrete data：</strong>可以一個一個數的資料，例如人數、次數、件數。</li>
+          <li><strong>連續資料 Continuous data：</strong>兩個可能值之間還能存在其他值的資料，例如身高、時間、氣溫。</li>
+        </ul>
+        <h3>2-2 資料蒐集的方法</h3>
+        <ul class="term-list">
+          <li><strong>調查 Survey：</strong>不控制研究對象的條件，直接蒐集資料。</li>
+          <li><strong>普查 Census：</strong>對母體中每一個元素蒐集資料。</li>
+          <li><strong>抽樣調查 Sampling：</strong>只選取母體中的部分元素進行調查。</li>
+          <li><strong>觀察 Observation：</strong>只觀察並記錄，不直接控制或介入研究對象。</li>
+          <li><strong>實驗 Experiment：</strong>控制某些條件或因素，再觀察結果。</li>
+        </ul>
+        <h3>2-3 統計圖表的種類</h3>
+        <ul class="term-list">
+          <li><strong>組距 Class width：</strong>次數分配表中每一組區間的寬度，例如 100 到 150 的組距為 50。</li>
+          <li><strong>Pareto 圖：</strong>依類別次數由大到小排列的長條圖，常用來找出主要類別。</li>
+          <li><strong>列聯表 Contingency table：</strong>用表格呈現兩個分類變數交叉後的人數或次數。</li>
+          <li><strong>散佈圖 Scatter plot：</strong>把兩個數值變數畫在座標平面上，用來觀察關係。</li>
+          <li><strong>時間序列圖 Time-series plot：</strong>以時間為橫軸呈現資料變化，用來觀察趨勢。</li>
+        </ul>
+      </section>
+
+      <section class="formula-box" id="formula">
+        <h2>公式與符號說明</h2>
+        <p>製作次數分配與圖表時，常需要先計算相對次數。</p>
+        <div class="formula">相對次數 = 該類別次數 / 總次數</div>
+        <ul>
+          <li><strong>該類別次數</strong>：某一類別或組距中觀察值出現的次數。</li>
+          <li><strong>總次數</strong>：所有觀察值的總數。</li>
+          <li><strong>使用時機</strong>：比較不同類別所占比例，或繪製圓餅圖、Pareto 圖。</li>
+        </ul>
+      </section>
+
+      <section class="example-box" id="examples">
+        <h2>範例解析</h2>
+        <article class="example-item">
+        <h3>範例 1：手機品牌資料</h3>
+        <p><strong>題目：</strong>調查班上 48 位同學手機品牌，資料包含 Nokia、Motorola、Sony Ericsson、OKWap、Samsung 與其他。請繪製摘要表、長條圖、圓餅圖與 Pareto 圖。</p>
+        <p><strong>解題想法：</strong>手機品牌是屬質資料。第一步不是直接畫圖，而是先計算每個品牌出現幾次，形成摘要表；接著才依摘要表畫圖。</p>
+        <p><strong>解題步驟：</strong>摘要表結果為 Nokia 13 人、Motorola 9 人、Sony Ericsson 8 人、OKWap 5 人、Samsung 4 人、其他 9 人，合計 48 人。長條圖以品牌為橫軸、人數為縱軸；圓餅圖以各品牌比例切分；Pareto 圖則依人數由大到小排列，方便看出主要品牌。</p>
+        <p><strong>教學提醒：</strong>品牌即使被編碼成數字，仍是類別資料。長條圖的長短代表次數大小，不代表品牌本身有大小順序。</p>
+        </article>
+
+        <article class="example-item">
+        <h3>範例 2：考試總分資料</h3>
+        <p><strong>題目：</strong>某國小 70 位學生五科總分介於 105 到 498 分，請排序並繪製莖葉圖、次數分配表、直方圖、折線圖與累積次數多邊形圖。</p>
+        <p><strong>解題想法：</strong>總分是屬量資料，而且資料筆數較多。先排序可以看出最小值、最大值與大致分布，再用組距把資料分組。</p>
+        <p><strong>解題步驟：</strong>將資料由小到大排序後，以 50 分為組距建立 8 組：100≤X&lt;150、150≤X&lt;200，直到 450≤X&lt;500。每組計算次數、相對次數與累積次數。例如 350≤X&lt;400 這組有 17 人，是人數最多的一組。</p>
+        <p><strong>答案：</strong>直方圖用相鄰長條呈現各組次數；折線圖連接各組組中點的次數；累積次數多邊形圖呈現到某分數以下累積多少人。</p>
+        <p class="teacher-note"><strong>教學提醒：</strong>直方圖與長條圖不同。直方圖的橫軸是連續或分組後的數值區間，長條通常相鄰；長條圖的橫軸是類別，類別間沒有連續距離。</p>
+        </article>
+
+        <article class="example-item">
+        <h3>範例 3：性別與手機品牌</h3>
+        <p><strong>題目：</strong>若手機品牌資料同時標示性別，男、女各 24 位，請製作列聯表。</p>
+        <p><strong>解題想法：</strong>性別與手機品牌都是屬質變數，適合用列聯表呈現兩個分類變數的交叉次數。</p>
+        <p><strong>解題步驟：</strong>列聯表的列可以放手機品牌，欄可以放男、女與合計。例子中，Nokia 男 6 人、女 7 人、合計 13 人；Samsung 男 0 人、女 4 人、合計 4 人。這種表格能看出品牌分布是否可能與性別有關。</p>
+        <p><strong>答案：</strong>使用列聯表或交叉表，而不是直方圖。因為研究的是兩個分類變數交叉後的次數。</p>
+        </article>
+
+        <article class="example-item">
+        <h3>範例 4：男女統計學期末成績</h3>
+        <p><strong>題目：</strong>某班男女生各 8 人，分別記錄統計學期末成績，請繪製散佈圖。</p>
+        <p><strong>解題想法：</strong>若把第 1 位到第 8 位作為配對順序，男生成績與女生成績都是屬量變數，可在座標平面上以男生成績為 x 軸、女生成績為 y 軸畫點。</p>
+        <p><strong>教學提醒：</strong>散佈圖不是比較類別次數，而是看兩組數值是否有一起變動的關係。</p>
+        </article>
+
+        <article class="example-item">
+        <h3>範例 5：興櫃轉上櫃家數</h3>
+        <p><strong>題目：</strong>統計 2005 到 2009 年興櫃轉上櫃家數與其中電子業家數，請繪製時間序列圖。</p>
+        <p><strong>解題想法：</strong>年份具有時間順序，因此應把年份放在橫軸，家數放在縱軸，觀察趨勢變化。</p>
+        <p><strong>答案：</strong>使用時間序列圖，可以看出上櫃家數與電子業家數是否逐年增加、減少或波動。</p>
+        </article>
+      </section>
+
+      <section class="practice-box" id="practice">
+        <h2>互動式練習</h2>
+        <h3>類別資料長條圖產生器</h3>
+        <p>輸入類別資料，每筆用逗號或換行分隔，例如：Nokia, Nokia, Samsung, 其他。</p>
+        <textarea id="category-input">Nokia, Samsung, Nokia, Motorola, 其他, Nokia, OKWap, Motorola, 其他, Samsung</textarea>
+        <div class="tool-row">
+          <button onclick="buildBarChart('category-input', 'bar-output')">產生長條圖</button>
+          <button onclick="resetPractice('practice')">重設</button>
+        </div>
+        <div class="chart-output" id="bar-output"></div>
+
+        <h3>圖表配對練習</h3>
+        <p>若資料是「身高」且想看整體分布，最適合的圖表是哪一個？</p>
+        <div class="quiz-options">
+          <label><input type="radio" name="q2" value="bar"> 長條圖</label>
+          <label><input type="radio" name="q2" value="histogram"> 直方圖</label>
+          <label><input type="radio" name="q2" value="pie"> 圓餅圖</label>
+        </div>
+        <button onclick="checkQuiz('q2', 'histogram', 'q2-feedback')">檢查答案</button>
+        <p class="feedback" id="q2-feedback"></p>
+      </section>
+
+      <section class="practice-box" id="homework">
+        <h2>課堂練習題</h2>
+        <ol>
+          <li>眼睛顏色是屬質資料或屬量資料？</li>
+          <li>便利商店一天賣出的牛奶瓶數是間斷資料或連續資料？</li>
+          <li>一天牛乳產量是間斷資料或連續資料？</li>
+          <li>室內溫度屬於哪一種衡量尺度？</li>
+          <li>考績甲、乙、丙屬於哪一種衡量尺度？</li>
+          <li>手機品牌資料適合長條圖或直方圖？請說明原因。</li>
+          <li>考試分數分布適合圓餅圖或直方圖？</li>
+          <li>性別與品牌兩個屬質變數適合用什麼表？</li>
+          <li>兩個數值變數的關係適合用什麼圖？</li>
+          <li>請說明普查與抽樣調查的差異，並各舉一個適用情境。</li>
+        </ol>
+        <button data-toggle-answer="hw2-answer">顯示參考答案</button>
+        <div class="answer-box" id="hw2-answer">
+          <p>參考答案：1 屬質；2 間斷；3 連續；4 區間尺度；5 順序尺度；6 長條圖，因手機品牌是類別；7 直方圖，因分數是數值資料；8 列聯表；9 散佈圖；10 普查調查全體，抽樣調查只調查部分元素並推估母體。普查適合母體小且容易接觸時，抽樣適合母體大、成本高或時間有限時。</p>
+        </div>
+      </section>
+
+      <section class="quiz-box" id="quiz">
+        <h2>課後自我測驗</h2>
+        <ul>
+          <li>□ 我能判斷一個變數是屬質或屬量。</li>
+          <li>□ 我能分辨間斷資料與連續資料。</li>
+          <li>□ 我能說明四種衡量尺度的差異。</li>
+          <li>□ 我能根據資料型態選擇合適圖表。</li>
+          <li>□ 我能解釋長條圖與直方圖的使用差異。</li>
+        </ul>
+      </section>
+
+      <section class="summary-box" id="summary">
+        <h2>本章重點整理</h2>
+        <p>資料視覺化前，必須先判斷資料型態與衡量尺度。類別資料重在比較類別次數，數值資料重在觀察分布、集中與離散。圖表不是裝飾，而是幫助讀者快速理解資料結構。</p>
+      </section>
+
+      <section class="teacher-note">
+        <h2>下一章預告</h2>
+        <p>下一章會進入統計測量數，學習平均數、中位數、變異數、標準差與相關係數等工具。</p>
+      </section>
+
+      <nav class="footer-nav">
+        <a class="button" href="chapter-01-introduction.html">回第 1 章</a>
+        <a class="button" href="index.html">回首頁</a>
+      </nav>
+    </main>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/quiz.js"></script>
+  <script src="../assets/js/statistics-tools.js"></script>
+  <script src="../assets/js/charts.js"></script>
+</body>
+</html>
