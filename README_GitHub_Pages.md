@@ -1,158 +1,150 @@
-# GitHub Pages 發布說明
+﻿# GitHub Pages 發布說明
 
-本文件說明如何將目前的統計學互動式 HTML 教材發布到 GitHub Pages。
+本專案已改為可部署到 GitHub Pages 的靜態網站。正式使用不需要 localhost、Python server、`.bat` 啟動檔或固定 port。
 
-## 目前網站結構
+## 目前網站
 
-正式部署只需要下列檔案與資料夾：
+Repository：
+
+```text
+https://github.com/leeyhdisney0702-design/ai-stat
+```
+
+GitHub Pages 網址：
+
+```text
+https://leeyhdisney0702-design.github.io/ai-stat/
+```
+
+## 部署方式
+
+本專案使用 GitHub Actions 部署。
+
+Workflow：
+
+```text
+.github/workflows/pages.yml
+```
+
+GitHub repository 設定：
+
+```text
+Settings -> Pages -> Build and deployment -> Source -> GitHub Actions
+```
+
+每次 push 到 `main` 後，GitHub Actions 會自動建立 `_site` artifact 並部署。
+
+## 正式部署內容
+
+部署 artifact 只包含：
 
 ```text
 index.html
 .nojekyll
-.gitignore
-README.md
-AGENTS.md
-README_GitHub_Pages.md
 html/
 assets/
-.github/workflows/pages.yml
 ```
 
-不要上傳原始教材或大型檔案：
+其中：
+
+- 根目錄 `index.html` 會導向 `html/index.html`。
+- `html/index.html` 是教材首頁。
+- 章節頁放在 `html/`。
+- CSS 與 JavaScript 放在 `assets/`。
+
+## 不可上傳內容
+
+以下內容不得納入 GitHub 或正式部署：
 
 ```text
 source/
 textbook/
 *.pdf
+extracted/
+暫存檔
+本機 server PID/port/state 檔
 ```
 
-目前 `.gitignore` 已排除上述檔案與資料夾。
+`.gitignore` 應持續排除上述項目。
 
-## 發布流程
+## 更新教材後如何發布
 
-### 1. 建立 GitHub repository
+1. 修改章節 HTML、首頁或共用 CSS/JS。
+2. 檢查相對路徑與章節連結。
+3. 加入必要檔案。
+4. commit。
+5. push 到 GitHub。
+6. 到 Actions 確認部署成功。
 
-到 GitHub 建立一個 repository，例如：
-
-```text
-ai-stat-html
-```
-
-建議先使用 public repository，GitHub Pages 設定最單純。
-
-### 2. 初始化 Git
-
-在 PowerShell 執行：
+建議指令：
 
 ```powershell
-cd D:\ai-stat
-git init
-git branch -M main
+git status --short
+git add html assets README.md AGENTS.md README_GitHub_Pages.md
+git commit -m "Update chapter content"
+git push
 ```
 
-如果資料夾已經是 Git repository，則不需要重新 `git init`。
-
-### 3. 加入要部署的檔案
-
-建議明確加入正式網站需要的檔案，不要直接使用 `git add .`。
+若有修改 workflow：
 
 ```powershell
-git add index.html .nojekyll .gitignore README.md AGENTS.md README_GitHub_Pages.md html assets .github
-git commit -m "Build GitHub Pages static textbook site"
+git add .github/workflows/pages.yml
+git commit -m "Update GitHub Pages workflow"
+git push
 ```
 
-### 4. 連接遠端 repository
-
-把 `<你的帳號>` 與 `<repo名稱>` 換成實際名稱：
+避免直接使用：
 
 ```powershell
-git remote add origin https://github.com/<你的帳號>/<repo名稱>.git
-git push -u origin main
+git add .
 ```
 
-如果 remote 已存在，先用下列指令確認：
+除非已確認沒有 `extracted/`、PDF 或其他暫存資料會被加入。
+
+## 新增章節時的部署檢查
+
+新增章節後請確認：
+
+- 新章節檔案位於 `html/`。
+- 檔名符合 `chapter-XX-topic.html`。
+- `html/index.html` 有新增章節入口。
+- 所有 CSS/JS 都使用相對路徑。
+- 沒有 `localhost`、`127.0.0.1`、`8000`、`8001`。
+- 表格中英文格式一致：中文一列、英文一列。
+- 專有名詞依小節分組，使用項目符號。
+- 範例之間有清楚分隔。
+- GitHub Actions 顯示綠色勾勾。
+
+## 本機測試
+
+正式網站不依賴本機 server。若開發時需要短暫測試，可執行：
 
 ```powershell
-git remote -v
+python -m http.server 8000 --bind 127.0.0.1
 ```
 
-### 5. 啟用 GitHub Pages
-
-到 GitHub repository 頁面：
+測試網址：
 
 ```text
-Settings -> Pages
+http://127.0.0.1:8000/html/
 ```
 
-Source 選擇：
+測試完成後停止 server。不要把本機網址寫入 HTML、CSS、JS 或 README 作為正式連結。
 
-```text
-GitHub Actions
-```
+## 常見問題
 
-本專案已提供 workflow：
+如果 Actions 顯示 `Get Pages site failed`：
 
-```text
-.github/workflows/pages.yml
-```
+- 到 `Settings -> Pages` 確認 Source 是 `GitHub Actions`。
+- Workflow 的 `actions/configure-pages` 可保留 `enablement: true`。
 
-推送到 `main` 或 `master` 後，GitHub Actions 會自動部署。
+如果網站開啟後樣式消失：
 
-## 部署後網址
+- 檢查 CSS 路徑是否為相對路徑。
+- 確認 `assets/css/style.css` 有被部署。
 
-部署成功後，GitHub Pages 網址通常是：
+如果章節連結失效：
 
-```text
-https://<你的帳號>.github.io/<repo名稱>/
-```
-
-根目錄 `index.html` 會自動導向：
-
-```text
-https://<你的帳號>.github.io/<repo名稱>/html/
-```
-
-## 部署後檢查清單
-
-請確認以下網址可正常開啟：
-
-```text
-/
-/html/
-/html/chapter-01-introduction.html
-/html/chapter-02-statistical-charts.html
-```
-
-請確認功能正常：
-
-- 首頁章節連結可開啟。
-- 第 1 章與第 2 章樣式正常載入。
-- 顯示/隱藏目錄按鈕正常。
-- 顯示答案按鈕正常。
-- 第 2 章長條圖互動工具正常。
-- 瀏覽器 console 沒有明顯錯誤。
-
-## 重要注意事項
-
-- 正式網站不可依賴 localhost、固定 port、Python server 或 `.bat` 檔。
-- HTML、CSS、JavaScript 與圖片路徑都必須使用相對路徑。
-- 原始 PDF 不可上傳到 GitHub。
-- 若 PDF 曾經被 Git 追蹤過，需執行：
-
-```powershell
-git rm --cached -r source textbook
-git rm --cached *.pdf
-```
-
-再重新 commit。
-
-## 本機預覽
-
-本機測試可以使用任一靜態檔案伺服器，例如：
-
-```powershell
-python -m http.server <port> --bind 127.0.0.1
-```
-
-本機預覽只是開發輔助，不是正式使用方式。
-
+- 檢查 `html/index.html` 的 href。
+- 不要使用 Windows 絕對路徑。
+- 不要使用 localhost 路徑。
