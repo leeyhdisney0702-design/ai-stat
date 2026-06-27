@@ -8,6 +8,26 @@
 - 暫不處理：第 14 章以後內容，除非使用者明確指定。
 - 暫不加入：即時雙語字幕、麥克風權限、語音辨識或其他媒體權限功能。
 
+## 已完成頁面
+
+| 頁面 | 檔案 | 內容重點 |
+| --- | --- | --- |
+| 首頁 | `html/index.html` | 教材說明、章節列表、學習順序。 |
+| 第 1 章 導論 | `html/chapter-01-introduction.html` | 統計流程、敘述統計與推論統計、母體與樣本。 |
+| 第 2 章 統計圖表 | `html/chapter-02-statistical-charts.html` | 資料型態、衡量尺度、資料蒐集與圖表選擇。 |
+| 第 3 章 統計測量數 | `html/chapter-03-descriptive-measures.html` | 中央趨勢、位置、分散程度、分配形狀與相關係數。 |
+| 第 4 章 機率論 | `html/chapter-04-probability.html` | 隨機實驗、事件機率、條件機率、獨立事件與貝氏定理。 |
+| 第 5 章 間斷隨機變數及其機率分配 | `html/chapter-05-discrete-random-variables.html` | 期望值、二項分配、超幾何分配與波松分配。 |
+| 第 6 章 連續隨機變數及其機率分配 | `html/chapter-06-continuous-random-variables.html` | 機率密度、均勻分配、常態分配與指數分配。 |
+| 第 7 章 抽樣分配 | `html/chapter-07-sampling-distribution.html` | 樣本平均數、標準誤、中央極限定理與樣本比例。 |
+| 第 8 章 點估計與區間估計 | `html/chapter-08-estimation.html` | 信賴區間、平均數與比例估計、樣本數規劃。 |
+| 第 9 章 假說檢定：單一母體 | `html/chapter-09-one-sample-hypothesis.html` | 單一母體平均數、比例、變異數檢定與檢定力。 |
+| 第 10 章 假說檢定：兩個母體 | `html/chapter-10-two-sample-hypothesis.html` | 兩平均數、配對樣本、兩變異數與兩比例差異推論。 |
+| 第 11 章 變異數分析 | `html/chapter-11-anova.html` | 單因子 ANOVA、變異數同質性、多重比較與二因子 ANOVA。 |
+| 第 12 章 迴歸分析 | `html/chapter-12-simple-regression.html` | 簡單線性迴歸、最小平方法、判定係數、殘差與相關分析。 |
+| 第 13 章 複迴歸模型 | `html/chapter-13-multiple-regression.html` | 多解釋變數模型、調整後 R²、整體檢定與診斷。 |
+| 附表 | `html/appendix-tables.html` | Z、t、卡方、F、Poisson、Tukey Q 與 Durbin-Watson 表的使用說明。 |
+
 ## 正式網站結構
 
 ```text
@@ -180,11 +200,11 @@ python -m http.server 8000 --bind 127.0.0.1
 
 ## 後續章節工作方式
 
-建議一次只處理一章：
+目前第 1 章至第 13 章與附表已完成。若後續要處理第 14 章或其他補充頁，建議一次只處理一個頁面：
 
 1. 閱讀 README.md 與 AGENTS.md。
 2. 確認目標章節與來源內容。
-3. 依既有第 1、2 章版型建立新章節 HTML。
+3. 依既有第 1 至第 13 章版型建立新章節 HTML。
 4. 補齊每一小節的說明、專有名詞、範例、練習。
 5. 更新 `html/index.html` 的章節入口。
 6. 檢查相對路徑與 GitHub Pages 部署條件。
@@ -194,6 +214,6 @@ python -m http.server 8000 --bind 127.0.0.1
 
 ```powershell
 git add html assets README.md AGENTS.md README_GitHub_Pages.md
-git commit -m "Add chapter XX interactive lesson"
+git commit -m "Add chapter XX lesson"
 git push
 ```

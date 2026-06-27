@@ -49,8 +49,33 @@ assets/
 
 - 根目錄 `index.html` 會導向 `html/index.html`。
 - `html/index.html` 是教材首頁。
-- 章節頁放在 `html/`。
+- 章節頁與附表頁放在 `html/`。
 - CSS 與 JavaScript 放在 `assets/`。
+
+目前正式網站包含：
+
+```text
+html/index.html
+html/chapter-01-introduction.html
+html/chapter-02-statistical-charts.html
+html/chapter-03-descriptive-measures.html
+html/chapter-04-probability.html
+html/chapter-05-discrete-random-variables.html
+html/chapter-06-continuous-random-variables.html
+html/chapter-07-sampling-distribution.html
+html/chapter-08-estimation.html
+html/chapter-09-one-sample-hypothesis.html
+html/chapter-10-two-sample-hypothesis.html
+html/chapter-11-anova.html
+html/chapter-12-simple-regression.html
+html/chapter-13-multiple-regression.html
+html/appendix-tables.html
+assets/css/style.css
+assets/js/main.js
+assets/js/quiz.js
+assets/js/statistics-tools.js
+assets/js/charts.js
+```
 
 ## 不可上傳內容
 
@@ -69,7 +94,7 @@ extracted/
 
 ## 更新教材後如何發布
 
-1. 修改章節 HTML、首頁或共用 CSS/JS。
+1. 修改章節 HTML、附表頁、首頁或共用 CSS/JS。
 2. 檢查相對路徑與章節連結。
 3. 加入必要檔案。
 4. commit。
@@ -101,19 +126,33 @@ git add .
 
 除非已確認沒有 `extracted/`、PDF 或其他暫存資料會被加入。
 
-## 新增章節時的部署檢查
+## 新增章節或附表頁時的部署檢查
 
-新增章節後請確認：
+新增頁面後請確認：
 
-- 新章節檔案位於 `html/`。
-- 檔名符合 `chapter-XX-topic.html`。
-- `html/index.html` 有新增章節入口。
+- 新頁面檔案位於 `html/`。
+- 章節檔名符合 `chapter-XX-topic.html`；附表或補充頁使用英文小寫與連字號。
+- `html/index.html` 有新增入口。
+- 前後頁章末導覽已串接。
 - 所有 CSS/JS 都使用相對路徑。
 - 沒有 `localhost`、`127.0.0.1`、`8000`、`8001`。
 - 表格中英文格式一致：中文一列、英文一列。
 - 專有名詞依小節分組，使用項目符號。
 - 範例之間有清楚分隔。
 - GitHub Actions 顯示綠色勾勾。
+
+目前第 1 章至第 13 章的章節頁右上導覽固定為：
+
+```text
+首頁
+顯示/隱藏項目
+```
+
+首頁右上導覽固定只保留：
+
+```text
+顯示/隱藏項目
+```
 
 ## 本機測試
 
