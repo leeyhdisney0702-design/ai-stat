@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第 11 章 變異數分析 | 統計學互動式 HTML 教材</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="topbar">
+      <a class="brand" href="index.html">統計學互動式 HTML 教材</a>
+      <nav class="topnav" aria-label="主要導覽">
+        <a href="index.html">首頁</a>
+        <button type="button" onclick="toggleSidebar('lesson-layout')">顯示/隱藏項目</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="layout" id="lesson-layout">
+    <aside class="sidebar">
+      <h2>第 11 章</h2>
+      <a href="#objectives">學習目標</a>
+      <a href="#map">本章地圖</a>
+      <a href="#concepts">核心內容</a>
+      <a href="#terms">名詞解釋</a>
+      <a href="#formula">公式說明</a>
+      <a href="#examples">範例解析</a>
+      <a href="#practice">互動練習</a>
+      <a href="#homework">課堂練習</a>
+      <a href="#quiz">自我測驗</a>
+      <a href="#summary">重點整理</a>
+    </aside>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Chapter 11</p>
+        <h1>變異數分析</h1>
+        <p>變異數分析用來比較三個以上母體平均數是否相同。它把資料總變異拆成組間與組內兩部分，透過 F 統計量判斷處理效果是否明顯。</p>
+      </section>
+
+      <section class="lesson-objectives" id="objectives">
+        <h2>學習目標</h2>
+        <ol>
+          <li>理解單因子 ANOVA 的問題設定。</li>
+          <li>分解組間變異、組內變異與總變異。</li>
+          <li>檢查變異數同質性並理解多重比較。</li>
+          <li>建立二因子 ANOVA 的主效果與交互作用概念。</li>
+        </ol>
+      </section>
+
+      <section class="chapter-map" id="map">
+        <h2>本章地圖</h2>
+        <p>本章先介紹單因子 ANOVA 與 F 檢定表，再說明變異數同質性、多重比較與二因子 ANOVA。學習重點是把平均數差異轉化為變異來源的比較。</p>
+      </section>
+
+      <section class="concept-box" id="concepts">
+        <h2>核心內容</h2>
+        <h3>11-1 單因子變異數分析</h3>
+        <p>單因子 ANOVA 用於比較三組以上平均數，例如不同教學法、不同品牌或不同地區的平均反應是否相同。H0 是所有母體平均數相等，H1 是至少一個平均數不同。</p>
+        <p>ANOVA 把總平方和分解為處理平方和與誤差平方和。若組間差異相對於組內波動很大，F 值會變大，表示平均數不全相同的證據較強。</p>
+
+        <h3>11-2 變異數同質性檢定</h3>
+        <p>ANOVA 假設各組母體變異數相等或接近。若各組變異差距很大，F 檢定結果可能受影響，因此需透過殘差圖、樣本標準差比較或正式檢定檢查。</p>
+        <p>資料轉換、穩健方法或改用不等變異方法，是處理變異數不同質時常見的策略。若只是小幅差異且樣本數接近，ANOVA 通常仍有一定穩健性。</p>
+
+        <h3>11-3 多重比較</h3>
+        <p>ANOVA 拒絕 H0 只表示至少有一組平均數不同，不能直接指出哪幾組不同。多重比較用來進一步比較成對平均數，同時控制整體錯誤率。</p>
+        <p>Tukey 程序適合所有成對比較。若各組樣本數相等，臨界差距形式較簡單；樣本數不等時可用 Tukey-Kramer 程序調整。</p>
+
+        <h3>11-4 二因子變異數分析</h3>
+        <p>二因子 ANOVA 同時研究兩個分類因子對數量反應變數的影響。例如教學法與年級是否影響成績。分析時可檢查因子 A 主效果、因子 B 主效果與交互作用。</p>
+        <p>交互作用表示一個因子的效果會隨另一個因子的水準改變。若交互作用明顯，解釋主效果時需特別小心，常要搭配交互作用圖。</p>
+      </section>
+
+      <section class="concept-box" id="terms">
+        <h2>名詞解釋</h2>
+        <h3>11-1 單因子 ANOVA</h3>
+        <ul class="term-list">
+          <li><strong>單因子變異數分析 One-way ANOVA：</strong>比較一個分類因子下三組以上平均數的方法。</li>
+          <li><strong>組間變異 Between-group variation：</strong>各組平均數之間造成的變異。</li>
+          <li><strong>組內變異 Within-group variation：</strong>同組觀測值彼此不同造成的變異。</li>
+        </ul>
+        <h3>11-2 同質性</h3>
+        <ul class="term-list">
+          <li><strong>變異數同質性 Homogeneity of variance：</strong>各組母體變異數相等或接近的假設。</li>
+          <li><strong>殘差 Residual：</strong>觀測值與模型預測值之間的差距。</li>
+        </ul>
+        <h3>11-3 多重比較</h3>
+        <ul class="term-list">
+          <li><strong>多重比較 Multiple comparison：</strong>ANOVA 後進行多組成對平均數比較的方法。</li>
+          <li><strong>Tukey 程序 Tukey procedure：</strong>控制整體錯誤率的成對比較方法。</li>
+        </ul>
+        <h3>11-4 二因子 ANOVA</h3>
+        <ul class="term-list">
+          <li><strong>主效果 Main effect：</strong>單一因子對反應變數的平均影響。</li>
+          <li><strong>交互作用 Interaction：</strong>一個因子的效果隨另一因子水準改變。</li>
+        </ul>
+      </section>
+
+      <section class="formula-box" id="formula">
+        <h2>公式說明</h2>
+        <div class="formula">總平方和：SST = SSTR + SSE</div>
+        <div class="formula">平均平方：MSTR=SSTR/(k-1)，MSE=SSE/(n-k)</div>
+        <div class="formula">ANOVA 檢定統計量：F = MSTR/MSE</div>
+        <div class="formula">Tukey 顯著差：qα × √(MSE/n)（樣本數相等時）</div>
+        <div class="formula">二因子 ANOVA：總變異可分為因子 A、因子 B、交互作用與誤差</div>
+      </section>
+
+      <section class="example-box" id="examples">
+        <h2>範例解析</h2>
+        <article class="example-item">
+          <h3>範例 1：三種教學法</h3>
+          <p>比較三種教學法的平均成績，若組間平均差異遠大於各組內部波動，F 值會偏大，可能拒絕「三種教學法平均成績相同」。</p>
+        </article>
+        <article class="example-item">
+          <h3>範例 2：多重比較</h3>
+          <p>ANOVA 顯示四家分店平均滿意度不全相同後，可用 Tukey 程序比較每兩家分店平均數差異是否超過顯著差。</p>
+        </article>
+        <article class="example-item">
+          <h3>範例 3：交互作用</h3>
+          <p>促銷方式對銷售的效果可能在不同地區不同，這代表促銷方式與地區存在交互作用，不能只看單一主效果。</p>
+        </article>
+      </section>
+
+      <section class="practice-box" id="practice">
+        <h2>互動練習</h2>
+        <h3>ANOVA 結論判斷</h3>
+        <p>單因子 ANOVA 拒絕 H0 時，最精確的結論是哪一個？</p>
+        <div class="quiz-options">
+          <label><input type="radio" name="q11" value="all"> 所有平均數都不同</label>
+          <label><input type="radio" name="q11" value="some"> 至少一個平均數不同</label>
+          <label><input type="radio" name="q11" value="none"> 所有變異數都不同</label>
+        </div>
+        <button onclick="checkQuiz('q11', 'some', 'q11-feedback')">檢查答案</button>
+        <p class="feedback" id="q11-feedback"></p>
+      </section>
+
+      <section class="practice-box" id="homework">
+        <h2>課堂練習</h2>
+        <ol>
+          <li>說明 ANOVA 為何使用 F 統計量。</li>
+          <li>ANOVA 拒絕 H0 後為何需要多重比較？</li>
+          <li>說明主效果與交互作用的差異。</li>
+          <li>列出單因子 ANOVA 的主要假設。</li>
+        </ol>
+        <button data-toggle-answer="hw11-answer">顯示參考答案</button>
+        <div class="answer-box" id="hw11-answer">
+          <p>第 2 題：ANOVA 只指出平均數不全相同，不能指出哪幾組不同。第 4 題：獨立、各組近似常態、變異數同質。</p>
+        </div>
+      </section>
+
+      <section class="quiz-box" id="quiz">
+        <h2>自我測驗</h2>
+        <ul>
+          <li>能寫出單因子 ANOVA 的 H0。</li>
+          <li>能解釋組間與組內變異。</li>
+          <li>能說明多重比較的用途。</li>
+          <li>能辨識二因子 ANOVA 的主效果與交互作用。</li>
+        </ul>
+      </section>
+
+      <section class="summary-box" id="summary">
+        <h2>重點整理</h2>
+        <p>ANOVA 以變異分解比較多組平均數。單因子 ANOVA 判斷平均數是否不全相同，多重比較找出差異來源，二因子 ANOVA 則進一步分析兩個因子與交互作用。</p>
+      </section>
+
+      <nav class="footer-nav">
+        <a class="button" href="chapter-10-two-sample-hypothesis.html">回第 10 章</a>
+        <a class="button" href="index.html">回首頁</a>
+        <a class="button" href="chapter-12-simple-regression.html">前往第 12 章</a>
+      </nav>
+    </main>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/quiz.js"></script>
+</body>
+</html>

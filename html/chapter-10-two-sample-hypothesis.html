@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第 10 章 假說檢定：兩個母體 | 統計學互動式 HTML 教材</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="topbar">
+      <a class="brand" href="index.html">統計學互動式 HTML 教材</a>
+      <nav class="topnav" aria-label="主要導覽">
+        <a href="index.html">首頁</a>
+        <button type="button" onclick="toggleSidebar('lesson-layout')">顯示/隱藏項目</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="layout" id="lesson-layout">
+    <aside class="sidebar">
+      <h2>第 10 章</h2>
+      <a href="#objectives">學習目標</a>
+      <a href="#map">本章地圖</a>
+      <a href="#concepts">核心內容</a>
+      <a href="#terms">名詞解釋</a>
+      <a href="#formula">公式說明</a>
+      <a href="#examples">範例解析</a>
+      <a href="#practice">互動練習</a>
+      <a href="#homework">課堂練習</a>
+      <a href="#quiz">自我測驗</a>
+      <a href="#summary">重點整理</a>
+    </aside>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Chapter 10</p>
+        <h1>假說檢定：兩個母體</h1>
+        <p>兩個母體推論用來比較兩組平均數、比例或變異數是否有差異。本章同時處理區間估計與假說檢定，重點在於辨認獨立樣本、配對樣本與變異數假設。</p>
+      </section>
+
+      <section class="lesson-objectives" id="objectives">
+        <h2>學習目標</h2>
+        <ol>
+          <li>建立兩母體平均數差異的信賴區間。</li>
+          <li>執行獨立樣本與配對樣本平均數檢定。</li>
+          <li>比較兩母體變異數。</li>
+          <li>推論兩母體比例差異。</li>
+        </ol>
+      </section>
+
+      <section class="chapter-map" id="map">
+        <h2>本章地圖</h2>
+        <p>本章從兩平均數差異開始，依樣本是否獨立、母體變異數是否可視為相等、樣本是否配對來選擇方法，接著介紹 F 檢定與兩比例推論。</p>
+      </section>
+
+      <section class="concept-box" id="concepts">
+        <h2>核心內容</h2>
+        <h3>10-1 兩個母體平均數差異的區間估計</h3>
+        <p>比較兩組平均數時，估計目標是 μ1-μ2。若兩組樣本獨立，標準誤由兩組樣本變異共同決定；若資料是一一配對，應先計算每對差值，再對差值平均數做推論。</p>
+        <p>當兩母體變異數可視為相等時，可使用合併變異數估計；若不確定相等，使用不等變異數方法通常較保守。方法選擇會影響自由度、標準誤與區間寬度。</p>
+
+        <h3>10-2 兩個母體平均數差異的假設檢定</h3>
+        <p>兩平均數檢定的 H0 通常寫成 μ1-μ2=0，表示兩母體平均數沒有差異。對立假設可依研究問題設定為大於、小於或不等於。</p>
+        <p>配對樣本常出現在前後測、同一對象兩種處理或左右側比較。此時觀測值不是獨立兩組，若誤用獨立樣本檢定，可能低估或高估變異。</p>
+
+        <h3>10-3 兩個母體變異數的假設檢定</h3>
+        <p>兩變異數檢定使用 F 統計量，也就是兩個樣本變異數的比值。通常把較大的樣本變異數放在分子，方便進行右尾判斷。</p>
+        <p>F 檢定對常態假設敏感，若資料偏態或有極端值，結論可能不穩。變異數同質性是後續 ANOVA 與合併變異數 t 檢定的重要前提。</p>
+
+        <h3>10-4 兩個母體比例差異的推論</h3>
+        <p>兩比例推論用於比較兩群體成功率，例如兩品牌滿意率、男女支持率或兩製程不良率。區間估計使用 p̂1-p̂2 與各自標準誤。</p>
+        <p>在檢定 H0:p1=p2 時，兩組比例在 H0 下相同，因此常使用合併比例 pc 估計共同成功率，再計算檢定統計量。</p>
+      </section>
+
+      <section class="concept-box" id="terms">
+        <h2>名詞解釋</h2>
+        <h3>10-1 平均數差異區間</h3>
+        <ul class="term-list">
+          <li><strong>獨立樣本 Independent samples：</strong>兩組觀測彼此沒有配對或相依關係。</li>
+          <li><strong>配對樣本 Paired samples：</strong>每一筆資料可與另一組中的一筆自然配對。</li>
+          <li><strong>合併變異數 Pooled variance：</strong>假設兩母體變異數相等時的共同變異估計。</li>
+        </ul>
+        <h3>10-2 平均數差異檢定</h3>
+        <ul class="term-list">
+          <li><strong>差值 Difference score：</strong>配對樣本中每一對觀測值的差。</li>
+          <li><strong>兩樣本 t 檢定 Two-sample t test：</strong>比較兩個母體平均數差異的檢定。</li>
+        </ul>
+        <h3>10-3 變異數檢定</h3>
+        <ul class="term-list">
+          <li><strong>F 分配 F distribution：</strong>兩個獨立卡方變數標準化比值形成的分配。</li>
+          <li><strong>變異數同質性 Homogeneity of variance：</strong>不同母體變異數相等或接近的條件。</li>
+        </ul>
+        <h3>10-4 比例差異</h3>
+        <ul class="term-list">
+          <li><strong>兩比例差異 Difference between two proportions：</strong>p1-p2 所代表的群體比例差異。</li>
+          <li><strong>合併比例 Pooled proportion：</strong>在 H0:p1=p2 下用兩樣本合併估計共同比例。</li>
+        </ul>
+      </section>
+
+      <section class="formula-box" id="formula">
+        <h2>公式說明</h2>
+        <div class="formula">獨立樣本平均數差異：估計值 x̄1-x̄2</div>
+        <div class="formula">配對樣本：對 d=x1-x2 建立 t 檢定或信賴區間</div>
+        <div class="formula">F 統計量：F=s1²/s2²</div>
+        <div class="formula">兩比例區間：p̂1-p̂2 ± zα/2√[p̂1(1-p̂1)/n1 + p̂2(1-p̂2)/n2]</div>
+        <div class="formula">兩比例檢定：Z=(p̂1-p̂2)/√[pc(1-pc)(1/n1+1/n2)]</div>
+      </section>
+
+      <section class="example-box" id="examples">
+        <h2>範例解析</h2>
+        <article class="example-item">
+          <h3>範例 1：獨立樣本平均數</h3>
+          <p>比較兩家分店平均等待時間，兩組顧客互不相同，屬於獨立樣本。估計目標是 μ1-μ2，標準誤需同時納入兩組樣本變異。</p>
+        </article>
+        <article class="example-item">
+          <h3>範例 2：配對樣本</h3>
+          <p>同一批學生補習前後各測一次成績，應先計算每位學生的進步分數，再對進步分數平均是否大於 0 做 t 檢定。</p>
+        </article>
+        <article class="example-item">
+          <h3>範例 3：兩比例比較</h3>
+          <p>A 方案 300 人中 180 人滿意，B 方案 250 人中 130 人滿意，可用 p̂A-p̂B 估計滿意率差異，並以兩比例檢定評估差異是否顯著。</p>
+        </article>
+      </section>
+
+      <section class="practice-box" id="practice">
+        <h2>互動練習</h2>
+        <h3>樣本型態判斷</h3>
+        <p>同一批受試者在訓練前與訓練後各測量一次，應使用哪一類方法？</p>
+        <div class="quiz-options">
+          <label><input type="radio" name="q10" value="independent"> 獨立樣本</label>
+          <label><input type="radio" name="q10" value="paired"> 配對樣本</label>
+          <label><input type="radio" name="q10" value="proportion"> 兩比例</label>
+        </div>
+        <button onclick="checkQuiz('q10', 'paired', 'q10-feedback')">檢查答案</button>
+        <p class="feedback" id="q10-feedback"></p>
+      </section>
+
+      <section class="practice-box" id="homework">
+        <h2>課堂練習</h2>
+        <ol>
+          <li>說明獨立樣本與配對樣本的差異。</li>
+          <li>何時使用合併變異數？</li>
+          <li>F 檢定的統計量如何建立？</li>
+          <li>兩比例檢定為何使用合併比例？</li>
+        </ol>
+        <button data-toggle-answer="hw10-answer">顯示參考答案</button>
+        <div class="answer-box" id="hw10-answer">
+          <p>第 2 題：當兩母體變異數可合理視為相等時。第 4 題：因 H0 假設兩母體比例相等，故以兩樣本合併估計共同比例。</p>
+        </div>
+      </section>
+
+      <section class="quiz-box" id="quiz">
+        <h2>自我測驗</h2>
+        <ul>
+          <li>能辨認獨立樣本與配對樣本。</li>
+          <li>能選擇兩平均數差異的推論方法。</li>
+          <li>能說明 F 檢定與變異數同質性。</li>
+          <li>能建立兩比例差異的檢定邏輯。</li>
+        </ul>
+      </section>
+
+      <section class="summary-box" id="summary">
+        <h2>重點整理</h2>
+        <p>兩母體推論的關鍵不是只套公式，而是先判斷資料結構。獨立樣本、配對樣本、變異數是否相等與比例資料會導向不同標準誤與檢定統計量。</p>
+      </section>
+
+      <nav class="footer-nav">
+        <a class="button" href="chapter-09-one-sample-hypothesis.html">回第 9 章</a>
+        <a class="button" href="index.html">回首頁</a>
+        <a class="button" href="chapter-11-anova.html">前往第 11 章</a>
+      </nav>
+    </main>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/quiz.js"></script>
+</body>
+</html>

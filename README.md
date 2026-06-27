@@ -4,8 +4,8 @@
 
 ## 目前進度
 
-- 已完成：首頁、第 1 章至第 7 章、共用 CSS/JS、GitHub Pages workflow。
-- 暫不處理：第 8 章以後內容，除非使用者明確指定。
+- 已完成：首頁、第 1 章至第 13 章、附表、共用 CSS/JS、GitHub Pages workflow。
+- 暫不處理：第 14 章以後內容，除非使用者明確指定。
 - 暫不加入：即時雙語字幕、麥克風權限、語音辨識或其他媒體權限功能。
 
 ## 正式網站結構
@@ -26,7 +26,14 @@ project-root/
 │  ├─ chapter-04-probability.html
 │  ├─ chapter-05-discrete-random-variables.html
 │  ├─ chapter-06-continuous-random-variables.html
-│  └─ chapter-07-sampling-distribution.html
+│  ├─ chapter-07-sampling-distribution.html
+│  ├─ chapter-08-estimation.html
+│  ├─ chapter-09-one-sample-hypothesis.html
+│  ├─ chapter-10-two-sample-hypothesis.html
+│  ├─ chapter-11-anova.html
+│  ├─ chapter-12-simple-regression.html
+│  ├─ chapter-13-multiple-regression.html
+│  └─ appendix-tables.html
 ├─ assets/
 │  ├─ css/style.css
 │  └─ js/
@@ -53,6 +60,13 @@ html/chapter-04-probability.html
 html/chapter-05-discrete-random-variables.html
 html/chapter-06-continuous-random-variables.html
 html/chapter-07-sampling-distribution.html
+html/chapter-08-estimation.html
+html/chapter-09-one-sample-hypothesis.html
+html/chapter-10-two-sample-hypothesis.html
+html/chapter-11-anova.html
+html/chapter-12-simple-regression.html
+html/chapter-13-multiple-regression.html
+html/appendix-tables.html
 ```
 
 不要使用中文檔名、空白、括號或不固定縮寫。

@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第 13 章 複迴歸模型 | 統計學互動式 HTML 教材</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="topbar">
+      <a class="brand" href="index.html">統計學互動式 HTML 教材</a>
+      <nav class="topnav" aria-label="主要導覽">
+        <a href="index.html">首頁</a>
+        <button type="button" onclick="toggleSidebar('lesson-layout')">顯示/隱藏項目</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="layout" id="lesson-layout">
+    <aside class="sidebar">
+      <h2>第 13 章</h2>
+      <a href="#objectives">學習目標</a>
+      <a href="#map">本章地圖</a>
+      <a href="#concepts">核心內容</a>
+      <a href="#terms">名詞解釋</a>
+      <a href="#formula">公式說明</a>
+      <a href="#examples">範例解析</a>
+      <a href="#practice">互動練習</a>
+      <a href="#homework">課堂練習</a>
+      <a href="#quiz">自我測驗</a>
+      <a href="#summary">重點整理</a>
+    </aside>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Chapter 13</p>
+        <h1>複迴歸模型</h1>
+        <p>複迴歸模型同時納入兩個以上解釋變數，用來控制其他因素後評估各變數與反應變數的關係。本章延伸簡單迴歸，介紹參數估計、判定係數、係數推論與殘差診斷。</p>
+      </section>
+
+      <section class="lesson-objectives" id="objectives">
+        <h2>學習目標</h2>
+        <ol>
+          <li>建立複迴歸模型與誤差假設。</li>
+          <li>解釋偏迴歸係數的意義。</li>
+          <li>判讀調整後判定係數與整體模型檢定。</li>
+          <li>進行係數檢定、區間估計與殘差分析。</li>
+        </ol>
+      </section>
+
+      <section class="chapter-map" id="map">
+        <h2>本章地圖</h2>
+        <p>本章從多個解釋變數的線性模型開始，說明誤差假設與最小平方估計，再討論 R²、調整後 R²、整體 F 檢定、個別 t 檢定與殘差分析。</p>
+      </section>
+
+      <section class="concept-box" id="concepts">
+        <h2>核心內容</h2>
+        <h3>13-1 複迴歸模型誤差項的假設與參數估計</h3>
+        <p>複迴歸模型寫成 Yi=β0+β1X1i+β2X2i+...+βpXpi+εi。每個斜率是偏迴歸係數，表示在其他解釋變數固定下，該變數增加一單位時 Y 的平均改變量。</p>
+        <p>參數通常仍以最小平方法估計。模型假設包含線性、誤差平均為 0、等變異、獨立性與推論時的常態性。</p>
+
+        <h3>13-2 判定係數</h3>
+        <p>複迴歸中的 R² 代表所有解釋變數共同解釋 Y 變異的比例。加入更多變數時，R² 不會下降，因此不能只用 R² 判斷模型是否更好。</p>
+        <p>調整後 R² 會考慮樣本數與解釋變數個數，對不必要的變數加入有所懲罰，較適合比較不同複迴歸模型。</p>
+
+        <h3>13-3 迴歸係數的假設檢定與區間估計</h3>
+        <p>整體 F 檢定檢查所有斜率是否同時為 0，若拒絕 H0，表示模型中至少一個解釋變數與 Y 有線性關係。個別 t 檢定則檢查某一係數在控制其他變數後是否顯著。</p>
+        <p>係數信賴區間提供效果大小的可能範圍。若區間很寬，代表估計不精確，可能與樣本數不足、變異過大或解釋變數高度相關有關。</p>
+
+        <h3>13-4 殘差分析</h3>
+        <p>複迴歸仍需用殘差圖、常態機率圖與序列相關檢查模型假設。殘差若呈系統型態，可能表示遺漏變數、非線性關係或變異數不固定。</p>
+        <p>多個解釋變數也會帶來共線性問題。若解釋變數彼此高度相關，個別係數的標準誤會變大，使 t 檢定較不容易顯著，係數解釋也會變得不穩定。</p>
+      </section>
+
+      <section class="concept-box" id="terms">
+        <h2>名詞解釋</h2>
+        <h3>13-1 模型與估計</h3>
+        <ul class="term-list">
+          <li><strong>複迴歸 Multiple regression：</strong>含兩個以上解釋變數的迴歸模型。</li>
+          <li><strong>偏迴歸係數 Partial regression coefficient：</strong>控制其他變數後某解釋變數的邊際效果。</li>
+          <li><strong>共線性 Multicollinearity：</strong>解釋變數之間高度相關的問題。</li>
+        </ul>
+        <h3>13-2 判定係數</h3>
+        <ul class="term-list">
+          <li><strong>調整後判定係數 Adjusted R-squared：</strong>考慮變數個數後的解釋比例指標。</li>
+          <li><strong>模型比較 Model comparison：</strong>評估不同解釋變數組合的模型表現。</li>
+        </ul>
+        <h3>13-3 係數推論</h3>
+        <ul class="term-list">
+          <li><strong>整體 F 檢定 Overall F test：</strong>檢查模型中是否至少有一個斜率不為 0。</li>
+          <li><strong>個別 t 檢定 Individual t test：</strong>檢查單一迴歸係數是否為 0。</li>
+          <li><strong>信賴區間 Confidence interval：</strong>係數可能值的推論範圍。</li>
+        </ul>
+        <h3>13-4 殘差診斷</h3>
+        <ul class="term-list">
+          <li><strong>遺漏變數 Omitted variable：</strong>模型未納入但會影響反應變數的重要因素。</li>
+          <li><strong>影響點 Influential point：</strong>對迴歸估計有明顯影響的觀測值。</li>
+        </ul>
+      </section>
+
+      <section class="formula-box" id="formula">
+        <h2>公式說明</h2>
+        <div class="formula">複迴歸模型：Yi=β0+β1X1i+...+βpXpi+εi</div>
+        <div class="formula">估計式：ŷ=b0+b1X1+...+bpXp</div>
+        <div class="formula">R²=SSR/SST，調整後 R²=1-(SSE/(n-p-1))/(SST/(n-1))</div>
+        <div class="formula">整體 F 檢定：H0:β1=β2=...=βp=0</div>
+        <div class="formula">個別係數檢定：t=bj/SE(bj)</div>
+      </section>
+
+      <section class="example-box" id="examples">
+        <h2>範例解析</h2>
+        <article class="example-item">
+          <h3>範例 1：房價模型</h3>
+          <p>以坪數、屋齡、距捷運距離預測房價時，坪數係數表示在屋齡與距離固定下，坪數增加一單位的平均房價差異。</p>
+        </article>
+        <article class="example-item">
+          <h3>範例 2：調整後 R²</h3>
+          <p>加入一個與房價幾乎無關的變數可能讓 R² 微幅上升，但調整後 R² 可能下降，表示該變數沒有提供足夠解釋力。</p>
+        </article>
+        <article class="example-item">
+          <h3>範例 3：共線性</h3>
+          <p>若坪數與房間數高度相關，兩者同時放入模型可能造成係數不穩定，標準誤變大，個別 t 檢定不顯著。</p>
+        </article>
+      </section>
+
+      <section class="practice-box" id="practice">
+        <h2>互動練習</h2>
+        <h3>偏迴歸係數判斷</h3>
+        <p>複迴歸中 b1 的解釋應包含哪個條件？</p>
+        <div class="quiz-options">
+          <label><input type="radio" name="q13" value="alone"> 只看 X1 與 Y</label>
+          <label><input type="radio" name="q13" value="control"> 控制其他解釋變數不變</label>
+          <label><input type="radio" name="q13" value="causal"> 一定代表因果效果</label>
+        </div>
+        <button onclick="checkQuiz('q13', 'control', 'q13-feedback')">檢查答案</button>
+        <p class="feedback" id="q13-feedback"></p>
+      </section>
+
+      <section class="practice-box" id="homework">
+        <h2>課堂練習</h2>
+        <ol>
+          <li>寫出含三個解釋變數的複迴歸模型。</li>
+          <li>說明 R² 與調整後 R² 的差異。</li>
+          <li>整體 F 檢定與個別 t 檢定回答的問題有何不同？</li>
+          <li>共線性會造成什麼影響？</li>
+        </ol>
+        <button data-toggle-answer="hw13-answer">顯示參考答案</button>
+        <div class="answer-box" id="hw13-answer">
+          <p>第 2 題：R² 加變數不會下降，調整後 R² 會對變數數量做修正。第 4 題：係數估計不穩、標準誤變大、個別變數解釋困難。</p>
+        </div>
+      </section>
+
+      <section class="quiz-box" id="quiz">
+        <h2>自我測驗</h2>
+        <ul>
+          <li>能解釋偏迴歸係數。</li>
+          <li>能判讀 R² 與調整後 R²。</li>
+          <li>能區分整體 F 檢定與個別 t 檢定。</li>
+          <li>能辨識殘差診斷與共線性問題。</li>
+        </ul>
+      </section>
+
+      <section class="summary-box" id="summary">
+        <h2>重點整理</h2>
+        <p>複迴歸讓研究者在控制多個因素後分析線性關係，但也增加模型診斷與解釋難度。判讀時需同時看係數意義、整體模型、個別檢定、調整後 R²、殘差與共線性。</p>
+      </section>
+
+      <nav class="footer-nav">
+        <a class="button" href="chapter-12-simple-regression.html">回第 12 章</a>
+        <a class="button" href="index.html">回首頁</a>
+        <a class="button" href="appendix-tables.html">前往附表</a>
+      </nav>
+    </main>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/quiz.js"></script>
+</body>
+</html>

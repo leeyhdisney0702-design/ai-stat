@@ -11,6 +11,7 @@ server-*.pid
 .server-state
 
 # Temporary files
+extracted/
 tmp/
 temp/
 *.tmp

@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第 8 章 點估計與區間估計 | 統計學互動式 HTML 教材</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="topbar">
+      <a class="brand" href="index.html">統計學互動式 HTML 教材</a>
+      <nav class="topnav" aria-label="主要導覽">
+        <a href="index.html">首頁</a>
+        <button type="button" onclick="toggleSidebar('lesson-layout')">顯示/隱藏項目</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="layout" id="lesson-layout">
+    <aside class="sidebar">
+      <h2>第 8 章</h2>
+      <a href="#objectives">學習目標</a>
+      <a href="#map">本章地圖</a>
+      <a href="#concepts">核心內容</a>
+      <a href="#terms">名詞解釋</a>
+      <a href="#formula">公式說明</a>
+      <a href="#examples">範例解析</a>
+      <a href="#practice">互動練習</a>
+      <a href="#homework">課堂練習</a>
+      <a href="#quiz">自我測驗</a>
+      <a href="#summary">重點整理</a>
+    </aside>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Chapter 8</p>
+        <h1>點估計與區間估計</h1>
+        <p>估計是用樣本資料推論母體參數的方法。點估計給出單一推測值，區間估計則同時呈現估計值與抽樣誤差，讓研究者能以信賴水準描述推論的不確定性。</p>
+      </section>
+
+      <section class="lesson-objectives" id="objectives">
+        <h2>學習目標</h2>
+        <ol>
+          <li>區分點估計、區間估計、估計量與估計值。</li>
+          <li>建立母體平均數在小樣本與大樣本下的信賴區間。</li>
+          <li>建立母體比例的信賴區間。</li>
+          <li>依信賴水準與允許誤差規劃樣本數。</li>
+        </ol>
+      </section>
+
+      <section class="chapter-map" id="map">
+        <h2>本章地圖</h2>
+        <p>本章先介紹估計的基本觀念與良好估計量條件，再分別處理小樣本平均數、大樣本平均數、母體比例與樣本數選擇。判斷公式前，先確認估計對象、樣本數、母體標準差是否已知，以及要使用的信賴水準。</p>
+      </section>
+
+      <section class="concept-box" id="concepts">
+        <h2>核心內容</h2>
+        <h3>8-1 點估計與區間估計</h3>
+        <p>點估計是用一個樣本統計量估計母體參數，例如用樣本平均數 x̄ 估計母體平均數 μ，用樣本比例 p̂ 估計母體比例 p。點估計容易理解，但沒有直接告訴我們估計可能偏離真值多少。</p>
+        <p>區間估計以「估計值 ± 誤差界限」呈現一段合理範圍。信賴水準描述長期重複抽樣時，這種建構程序能涵蓋真實參數的比例；它不是說某一次已算出的區間內，參數有某個隨機機率。</p>
+
+        <h3>8-2 小樣本下母體平均數之區間估計</h3>
+        <p>當樣本數較小且母體標準差未知時，使用樣本標準差 s 估計 σ 會增加不確定性，因此需使用 t 分配。t 分配以自由度 n-1 決定形狀，樣本數越大，曲線越接近標準常態分配。</p>
+        <p>小樣本 t 區間通常要求母體近似常態，或至少資料沒有嚴重偏態與極端值。若樣本很小且資料形狀不穩定，信賴區間的解釋也會較不可靠。</p>
+
+        <h3>8-3 大樣本下母體平均數之區間估計</h3>
+        <p>樣本數夠大時，可利用中央極限定理建立平均數信賴區間。若母體標準差 σ 已知，標準誤為 σ/√n；若 σ 未知，實務上常以樣本標準差 s 代替。</p>
+        <p>區間寬度受三個因素影響：信賴水準越高，臨界值越大，區間越寬；資料變異越大，區間越寬；樣本數越大，標準誤越小，區間越窄。</p>
+
+        <h3>8-4 母體比例的區間估計</h3>
+        <p>比例估計適用於二元結果，例如支持率、瑕疵率、通過率與滿意率。樣本比例 p̂ 的標準誤約為 √[p̂(1-p̂)/n]，樣本數足夠大時可用常態近似建立信賴區間。</p>
+        <p>使用比例區間前，需確認成功與失敗次數都不要太少。若 p̂ 接近 0 或 1，或樣本數很小，常態近似可能失準，應改用更精細的方法。</p>
+
+        <h3>8-5 樣本數的選擇</h3>
+        <p>樣本數規劃先決定信賴水準與可接受的誤差界限 E。估計平均數時，需要先取得標準差的先驗估計；估計比例時，若沒有 p 的先驗資訊，常用 p=0.5 取得較保守的樣本數。</p>
+        <p>樣本數越大通常能降低抽樣誤差，但不能修正抽樣偏差。若抽樣方法不具代表性，即使樣本數很大，也可能得到精確但偏誤的估計。</p>
+      </section>
+
+      <section class="concept-box" id="terms">
+        <h2>名詞解釋</h2>
+        <h3>8-1 估計概念</h3>
+        <ul class="term-list">
+          <li><strong>點估計 Point estimation：</strong>用單一統計量估計母體參數。</li>
+          <li><strong>區間估計 Interval estimation：</strong>用一段範圍估計母體參數。</li>
+          <li><strong>信賴水準 Confidence level：</strong>長期重複抽樣時，區間建構程序涵蓋真實參數的比例。</li>
+        </ul>
+        <h3>8-2 小樣本平均數</h3>
+        <ul class="term-list">
+          <li><strong>t 分配 t distribution：</strong>母體標準差未知且以 s 估計 σ 時常用的分配。</li>
+          <li><strong>自由度 Degrees of freedom：</strong>估計變異時可自由變動的資訊數量。</li>
+        </ul>
+        <h3>8-3 大樣本平均數</h3>
+        <ul class="term-list">
+          <li><strong>誤差界限 Margin of error：</strong>估計值與信賴區間端點之間的距離。</li>
+          <li><strong>標準誤 Standard error：</strong>統計量抽樣分配的標準差。</li>
+        </ul>
+        <h3>8-4 比例估計</h3>
+        <ul class="term-list">
+          <li><strong>樣本比例 Sample proportion：</strong>樣本中成功者所占比例。</li>
+          <li><strong>常態近似 Normal approximation：</strong>用常態分配近似樣本比例抽樣分配。</li>
+        </ul>
+        <h3>8-5 樣本數</h3>
+        <ul class="term-list">
+          <li><strong>允許誤差 Allowable error：</strong>研究者可接受的最大估計誤差。</li>
+          <li><strong>保守估計 Conservative estimate：</strong>比例未知時用 p=0.5 取得較大的規劃樣本數。</li>
+        </ul>
+      </section>
+
+      <section class="formula-box" id="formula">
+        <h2>公式說明</h2>
+        <div class="formula">平均數信賴區間：x̄ ± 臨界值 × 標準誤</div>
+        <div class="formula">小樣本且 σ 未知：x̄ ± tα/2,n-1 × s/√n</div>
+        <div class="formula">大樣本平均數：x̄ ± zα/2 × s/√n</div>
+        <div class="formula">比例信賴區間：p̂ ± zα/2 × √[p̂(1-p̂)/n]</div>
+        <div class="formula">比例樣本數：n = zα/2² p(1-p) / E²</div>
+      </section>
+
+      <section class="example-box" id="examples">
+        <h2>範例解析</h2>
+        <article class="example-item">
+          <h3>範例 1：小樣本平均數區間</h3>
+          <p>抽樣 25 位學生，平均讀書時間 3.2 小時，樣本標準差 0.8。若建立 95% 信賴區間，使用自由度 24 的 t 臨界值，區間形式為 3.2 ± t×0.8/√25。</p>
+        </article>
+        <article class="example-item">
+          <h3>範例 2：比例區間</h3>
+          <p>抽查 400 人，其中 240 人支持某方案，p̂=0.60。95% 信賴區間為 0.60 ± 1.96√(0.60×0.40/400)。</p>
+        </article>
+        <article class="example-item">
+          <h3>範例 3：樣本數規劃</h3>
+          <p>若估計支持率希望誤差不超過 0.03，且沒有先驗比例，可用 p=0.5 規劃 n=1.96²×0.5×0.5/0.03²。</p>
+        </article>
+      </section>
+
+      <section class="practice-box" id="practice">
+        <h2>互動練習</h2>
+        <h3>誤差界限判斷</h3>
+        <p>在信賴水準與資料變異不變時，樣本數增加會讓信賴區間如何改變？</p>
+        <div class="quiz-options">
+          <label><input type="radio" name="q8" value="wider"> 變寬</label>
+          <label><input type="radio" name="q8" value="narrower"> 變窄</label>
+          <label><input type="radio" name="q8" value="same"> 不變</label>
+        </div>
+        <button onclick="checkQuiz('q8', 'narrower', 'q8-feedback')">檢查答案</button>
+        <p class="feedback" id="q8-feedback"></p>
+      </section>
+
+      <section class="practice-box" id="homework">
+        <h2>課堂練習</h2>
+        <ol>
+          <li>說明點估計與區間估計的差異。</li>
+          <li>為何小樣本且 σ 未知時使用 t 分配？</li>
+          <li>p̂=0.42、n=500 時，寫出 95% 比例信賴區間的形式。</li>
+          <li>說明信賴水準提高對區間寬度的影響。</li>
+        </ol>
+        <button data-toggle-answer="hw8-answer">顯示參考答案</button>
+        <div class="answer-box" id="hw8-answer">
+          <p>第 2 題：因為以 s 估計 σ 會增加不確定性，t 分配尾端較厚。第 4 題：信賴水準提高，臨界值增加，區間變寬。</p>
+        </div>
+      </section>
+
+      <section class="quiz-box" id="quiz">
+        <h2>自我測驗</h2>
+        <ul>
+          <li>能判斷估計量與母體參數的差異。</li>
+          <li>能依條件選擇 Z 區間或 t 區間。</li>
+          <li>能解釋信賴水準與誤差界限。</li>
+          <li>能用允許誤差反推樣本數。</li>
+        </ul>
+      </section>
+
+      <section class="summary-box" id="summary">
+        <h2>重點整理</h2>
+        <p>估計把樣本資訊轉換為母體參數的推論。點估計提供單一答案，區間估計呈現抽樣誤差；信賴水準、變異程度與樣本數共同決定區間寬度。</p>
+      </section>
+
+      <nav class="footer-nav">
+        <a class="button" href="chapter-07-sampling-distribution.html">回第 7 章</a>
+        <a class="button" href="index.html">回首頁</a>
+        <a class="button" href="chapter-09-one-sample-hypothesis.html">前往第 9 章</a>
+      </nav>
+    </main>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/quiz.js"></script>
+</body>
+</html>

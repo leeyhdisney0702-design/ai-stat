@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第 12 章 迴歸分析 | 統計學互動式 HTML 教材</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="topbar">
+      <a class="brand" href="index.html">統計學互動式 HTML 教材</a>
+      <nav class="topnav" aria-label="主要導覽">
+        <a href="index.html">首頁</a>
+        <button type="button" onclick="toggleSidebar('lesson-layout')">顯示/隱藏項目</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="layout" id="lesson-layout">
+    <aside class="sidebar">
+      <h2>第 12 章</h2>
+      <a href="#objectives">學習目標</a>
+      <a href="#map">本章地圖</a>
+      <a href="#concepts">核心內容</a>
+      <a href="#terms">名詞解釋</a>
+      <a href="#formula">公式說明</a>
+      <a href="#examples">範例解析</a>
+      <a href="#practice">互動練習</a>
+      <a href="#homework">課堂練習</a>
+      <a href="#quiz">自我測驗</a>
+      <a href="#summary">重點整理</a>
+    </aside>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Chapter 12</p>
+        <h1>迴歸分析</h1>
+        <p>迴歸分析用來描述與預測兩個數量變數之間的線性關係。本章介紹簡單線性迴歸模型、最小平方法、判定係數、係數推論、殘差分析與相關分析。</p>
+      </section>
+
+      <section class="lesson-objectives" id="objectives">
+        <h2>學習目標</h2>
+        <ol>
+          <li>建立簡單線性迴歸模型。</li>
+          <li>使用最小平方法估計截距與斜率。</li>
+          <li>解釋判定係數與迴歸係數檢定。</li>
+          <li>用殘差圖與相關係數檢查模型。</li>
+        </ol>
+      </section>
+
+      <section class="chapter-map" id="map">
+        <h2>本章地圖</h2>
+        <p>本章從散佈圖與線性模型開始，說明迴歸參數估計與誤差假設，再介紹 R²、係數檢定、殘差分析、Durbin-Watson 檢定與相關分析。</p>
+      </section>
+
+      <section class="concept-box" id="concepts">
+        <h2>核心內容</h2>
+        <h3>12-1 簡單線性迴歸</h3>
+        <p>簡單線性迴歸用一個解釋變數 X 預測一個反應變數 Y，模型寫成 Yi=β0+β1Xi+εi。β0 是截距，β1 是斜率，表示 X 增加一單位時 Y 平均改變多少。</p>
+        <p>建模前應先看散佈圖，確認線性趨勢是否合理。若關係明顯彎曲或有群集，直接套用線性迴歸可能產生誤導。</p>
+
+        <h3>12-2 迴歸參數的估計</h3>
+        <p>最小平方法選擇一條直線，使所有殘差平方和最小。估計得到的迴歸線 ŷ=b0+b1x 可用於解釋平均關係與在合理範圍內預測。</p>
+        <p>斜率估計值 b1 的正負決定線性關係方向。b1 為正表示 X 越大，Y 平均越大；b1 為負表示 X 越大，Y 平均越小。</p>
+
+        <h3>12-3 隨機誤差</h3>
+        <p>迴歸模型假設誤差項平均為 0、變異數固定、彼此獨立且在推論時常假設近似常態。這些假設讓係數檢定與區間估計有合理基礎。</p>
+        <p>誤差項代表模型未解釋的因素。若重要變數被遺漏、資料有時間相依或變異隨 X 改變，誤差假設就可能不成立。</p>
+
+        <h3>12-4 判定係數</h3>
+        <p>判定係數 R² 表示 Y 的總變異中，有多少比例可由迴歸模型解釋。R² 越高代表模型對樣本資料的線性解釋能力越強。</p>
+        <p>R² 高不代表因果成立，也不保證模型適合預測。若超出資料範圍外推，或資料中存在異常點，預測仍可能不可靠。</p>
+
+        <h3>12-5 迴歸係數的假設檢定與區間估計</h3>
+        <p>斜率檢定常設定 H0:β1=0，檢查 X 與 Y 是否存在線性關係。若拒絕 H0，表示在模型假設下，X 對 Y 的線性解釋具有統計證據。</p>
+        <p>係數也可建立信賴區間。若斜率信賴區間不包含 0，通常與雙尾檢定拒絕 H0:β1=0 相對應。</p>
+
+        <h3>12-6 殘差分析</h3>
+        <p>殘差圖用來檢查線性、等變異與異常點。若殘差隨預測值呈漏斗形，代表變異數可能不固定；若呈曲線型，代表線性模型不足。</p>
+        <p>常態機率圖可檢查殘差常態性；Durbin-Watson 統計量可用於時間序列資料的序列相關檢查。</p>
+
+        <h3>12-7 相關分析</h3>
+        <p>相關係數衡量兩個數量變數的線性關係方向與強度，介於 -1 與 1。簡單迴歸中，R² 等於相關係數平方。</p>
+        <p>相關不等於因果。即使相關很高，也可能是共同因素、時間趨勢或樣本範圍造成。</p>
+      </section>
+
+      <section class="concept-box" id="terms">
+        <h2>名詞解釋</h2>
+        <h3>12-1 線性模型</h3>
+        <ul class="term-list">
+          <li><strong>反應變數 Response variable：</strong>被解釋或被預測的變數 Y。</li>
+          <li><strong>解釋變數 Explanatory variable：</strong>用來解釋或預測 Y 的變數 X。</li>
+          <li><strong>斜率 Slope：</strong>X 增加一單位時 Y 平均改變量。</li>
+        </ul>
+        <h3>12-2 參數估計</h3>
+        <ul class="term-list">
+          <li><strong>最小平方法 Least squares：</strong>使殘差平方和最小的估計方法。</li>
+          <li><strong>迴歸線 Regression line：</strong>描述 X 與 Y 平均線性關係的直線。</li>
+        </ul>
+        <h3>12-3 誤差項</h3>
+        <ul class="term-list">
+          <li><strong>隨機誤差 Random error：</strong>模型無法解釋的隨機部分。</li>
+          <li><strong>等變異 Homoscedasticity：</strong>不同 X 水準下誤差變異相同。</li>
+        </ul>
+        <h3>12-4 判定係數</h3>
+        <ul class="term-list">
+          <li><strong>判定係數 Coefficient of determination：</strong>模型解釋 Y 變異的比例。</li>
+          <li><strong>外推 Extrapolation：</strong>在資料範圍外進行預測。</li>
+        </ul>
+        <h3>12-5 係數推論</h3>
+        <ul class="term-list">
+          <li><strong>斜率檢定 Slope test：</strong>檢查 β1 是否等於 0 的檢定。</li>
+          <li><strong>預測區間 Prediction interval：</strong>預測單一新觀測值可能落入的區間。</li>
+        </ul>
+        <h3>12-6 殘差診斷</h3>
+        <ul class="term-list">
+          <li><strong>殘差圖 Residual plot：</strong>以殘差檢查模型假設的圖形。</li>
+          <li><strong>Durbin-Watson 檢定 Durbin-Watson test：</strong>檢查相鄰誤差是否存在序列相關的方法。</li>
+        </ul>
+        <h3>12-7 相關</h3>
+        <ul class="term-list">
+          <li><strong>相關係數 Correlation coefficient：</strong>衡量兩數量變數線性關係的標準化量數。</li>
+          <li><strong>因果關係 Causation：</strong>一變數變化直接造成另一變數變化的關係。</li>
+        </ul>
+      </section>
+
+      <section class="formula-box" id="formula">
+        <h2>公式說明</h2>
+        <div class="formula">簡單線性迴歸模型：Yi=β0+β1Xi+εi</div>
+        <div class="formula">估計迴歸線：ŷ=b0+b1x</div>
+        <div class="formula">殘差：ei=yi-ŷi</div>
+        <div class="formula">判定係數：R²=SSR/SST=1-SSE/SST</div>
+        <div class="formula">斜率檢定：t=(b1-β1,0)/SE(b1)</div>
+      </section>
+
+      <section class="example-box" id="examples">
+        <h2>範例解析</h2>
+        <article class="example-item">
+          <h3>範例 1：廣告與銷售</h3>
+          <p>以廣告費預測銷售額時，斜率若為 2.4，表示廣告費每增加一單位，平均銷售額約增加 2.4 單位，但仍需檢查模型假設。</p>
+        </article>
+        <article class="example-item">
+          <h3>範例 2：R² 判讀</h3>
+          <p>若 R²=0.72，表示樣本中銷售額變異約有 72% 可由廣告費的線性模型解釋，剩下 28% 來自其他因素與隨機波動。</p>
+        </article>
+        <article class="example-item">
+          <h3>範例 3：殘差圖</h3>
+          <p>若殘差圖呈現越往右越分散的漏斗形，代表等變異假設可能不成立，需考慮轉換變數或使用其他方法。</p>
+        </article>
+      </section>
+
+      <section class="practice-box" id="practice">
+        <h2>互動練習</h2>
+        <h3>迴歸概念判斷</h3>
+        <p>簡單線性迴歸中，若斜率 b1 為負，表示什麼？</p>
+        <div class="quiz-options">
+          <label><input type="radio" name="q12" value="positive"> X 越大，Y 平均越大</label>
+          <label><input type="radio" name="q12" value="negative"> X 越大，Y 平均越小</label>
+          <label><input type="radio" name="q12" value="none"> X 與 Y 一定無關</label>
+        </div>
+        <button onclick="checkQuiz('q12', 'negative', 'q12-feedback')">檢查答案</button>
+        <p class="feedback" id="q12-feedback"></p>
+      </section>
+
+      <section class="practice-box" id="homework">
+        <h2>課堂練習</h2>
+        <ol>
+          <li>說明截距與斜率的意義。</li>
+          <li>為何建模前要看散佈圖？</li>
+          <li>R² 高是否代表因果成立？說明原因。</li>
+          <li>列出殘差分析可檢查的模型假設。</li>
+        </ol>
+        <button data-toggle-answer="hw12-answer">顯示參考答案</button>
+        <div class="answer-box" id="hw12-answer">
+          <p>第 3 題：不代表。R² 只描述線性解釋比例，因果仍需研究設計與理論支持。第 4 題：線性、等變異、常態性、獨立性與異常點。</p>
+        </div>
+      </section>
+
+      <section class="quiz-box" id="quiz">
+        <h2>自我測驗</h2>
+        <ul>
+          <li>能寫出簡單線性迴歸模型。</li>
+          <li>能解釋最小平方法與殘差。</li>
+          <li>能判讀 R² 與斜率檢定。</li>
+          <li>能用殘差圖診斷模型問題。</li>
+        </ul>
+      </section>
+
+      <section class="summary-box" id="summary">
+        <h2>重點整理</h2>
+        <p>簡單線性迴歸以一條直線描述兩個數量變數的平均關係。模型不只要估計直線，也要檢查誤差假設、判讀 R²、進行係數推論，並避免把相關誤解為因果。</p>
+      </section>
+
+      <nav class="footer-nav">
+        <a class="button" href="chapter-11-anova.html">回第 11 章</a>
+        <a class="button" href="index.html">回首頁</a>
+        <a class="button" href="chapter-13-multiple-regression.html">前往第 13 章</a>
+      </nav>
+    </main>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/quiz.js"></script>
+</body>
+</html>

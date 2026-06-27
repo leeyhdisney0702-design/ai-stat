@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第 9 章 假說檢定：單一母體 | 統計學互動式 HTML 教材</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="topbar">
+      <a class="brand" href="index.html">統計學互動式 HTML 教材</a>
+      <nav class="topnav" aria-label="主要導覽">
+        <a href="index.html">首頁</a>
+        <button type="button" onclick="toggleSidebar('lesson-layout')">顯示/隱藏項目</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="layout" id="lesson-layout">
+    <aside class="sidebar">
+      <h2>第 9 章</h2>
+      <a href="#objectives">學習目標</a>
+      <a href="#map">本章地圖</a>
+      <a href="#concepts">核心內容</a>
+      <a href="#terms">名詞解釋</a>
+      <a href="#formula">公式說明</a>
+      <a href="#examples">範例解析</a>
+      <a href="#practice">互動練習</a>
+      <a href="#homework">課堂練習</a>
+      <a href="#quiz">自我測驗</a>
+      <a href="#summary">重點整理</a>
+    </aside>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Chapter 9</p>
+        <h1>假說檢定：單一母體</h1>
+        <p>假說檢定用樣本資料評估關於母體的主張是否合理。本章聚焦單一母體，依平均數、比例與變異數建立檢定流程，並說明型 I、型 II 錯誤與檢定力。</p>
+      </section>
+
+      <section class="lesson-objectives" id="objectives">
+        <h2>學習目標</h2>
+        <ol>
+          <li>建立虛無假設與對立假設。</li>
+          <li>使用臨界值法與 p 值法進行檢定。</li>
+          <li>檢定單一母體平均數、比例與變異數。</li>
+          <li>理解型 I 錯誤、型 II 錯誤與檢定力。</li>
+        </ol>
+      </section>
+
+      <section class="chapter-map" id="map">
+        <h2>本章地圖</h2>
+        <p>本章從檢定的邏輯開始，先建立假設、顯著水準與拒絕域，再分別處理平均數、比例與變異數，最後說明錯誤機率與檢定力如何影響研究結論。</p>
+      </section>
+
+      <section class="concept-box" id="concepts">
+        <h2>核心內容</h2>
+        <h3>9-1 假設檢定的基本觀念</h3>
+        <p>假說檢定通常先設定虛無假設 H0，代表接受檢驗的基準說法；對立假設 H1 則代表研究者想取得支持的方向。樣本資料若與 H0 差距太大，就拒絕 H0。</p>
+        <p>臨界值法先由顯著水準決定拒絕域，再比較檢定統計量；p 值法則計算在 H0 為真時，出現目前或更極端結果的機率。兩種方法在同一顯著水準下會得到一致結論。</p>
+
+        <h3>9-2 母體平均數的假設檢定</h3>
+        <p>平均數檢定依母體標準差是否已知與樣本數大小選擇 Z 或 t 統計量。對立假設可分左尾、右尾與雙尾，拒絕域也會隨之改變。</p>
+        <p>檢定前要確認抽樣獨立，並注意母體分配與樣本數條件。小樣本使用 t 檢定時，資料應大致常態或沒有嚴重極端值。</p>
+
+        <h3>9-3 母體比例的假設檢定</h3>
+        <p>比例檢定用於二元結果，例如產品不良率是否超過標準、支持率是否高於特定比例。檢定統計量以 H0 下的比例 p0 計算標準誤。</p>
+        <p>使用常態近似時，np0 與 n(1-p0) 應足夠大。若樣本太小或比例接近 0、1，常態近似可能失準。</p>
+
+        <h3>9-4 母體變異數的假說檢定</h3>
+        <p>變異數檢定常用於品質穩定度、製程波動或測量誤差是否符合標準。若母體近似常態，統計量 (n-1)s²/σ0² 服從卡方分配。</p>
+        <p>卡方分配不對稱，因此左尾與右尾臨界值不同。進行雙尾檢定時，要把顯著水準分配到兩端。</p>
+
+        <h3>9-5 型 II 錯誤的機率與檢定力</h3>
+        <p>型 I 錯誤是 H0 為真卻拒絕 H0，機率以 α 表示；型 II 錯誤是 H0 為假卻未拒絕 H0，機率以 β 表示。檢定力為 1-β，代表能偵測真實差異的能力。</p>
+        <p>在其他條件不變時，樣本數增加、資料變異減少、真實差異變大，都會提高檢定力。顯著水準 α 與 β 之間常有取捨，因此研究設計不能只看是否拒絕 H0。</p>
+      </section>
+
+      <section class="concept-box" id="terms">
+        <h2>名詞解釋</h2>
+        <h3>9-1 檢定概念</h3>
+        <ul class="term-list">
+          <li><strong>虛無假設 Null hypothesis：</strong>檢定時作為基準的主張。</li>
+          <li><strong>對立假設 Alternative hypothesis：</strong>與虛無假設相對的研究主張。</li>
+          <li><strong>p 值 p-value：</strong>在 H0 為真時出現目前或更極端結果的機率。</li>
+        </ul>
+        <h3>9-2 平均數檢定</h3>
+        <ul class="term-list">
+          <li><strong>左尾檢定 Left-tailed test：</strong>對立假設為小於某值的檢定。</li>
+          <li><strong>右尾檢定 Right-tailed test：</strong>對立假設為大於某值的檢定。</li>
+          <li><strong>雙尾檢定 Two-tailed test：</strong>對立假設為不等於某值的檢定。</li>
+        </ul>
+        <h3>9-3 比例檢定</h3>
+        <ul class="term-list">
+          <li><strong>檢定比例 Hypothesized proportion：</strong>虛無假設中指定的母體比例。</li>
+          <li><strong>二元資料 Binary data：</strong>每筆觀測只有成功或失敗兩類結果。</li>
+        </ul>
+        <h3>9-4 變異數檢定</h3>
+        <ul class="term-list">
+          <li><strong>卡方分配 Chi-square distribution：</strong>常用於變異數推論的右偏分配。</li>
+          <li><strong>製程波動 Process variation：</strong>生產或服務流程結果的變異程度。</li>
+        </ul>
+        <h3>9-5 錯誤與檢定力</h3>
+        <ul class="term-list">
+          <li><strong>型 I 錯誤 Type I error：</strong>H0 為真卻拒絕 H0。</li>
+          <li><strong>型 II 錯誤 Type II error：</strong>H0 為假卻未拒絕 H0。</li>
+          <li><strong>檢定力 Power：</strong>正確拒絕錯誤 H0 的機率。</li>
+        </ul>
+      </section>
+
+      <section class="formula-box" id="formula">
+        <h2>公式說明</h2>
+        <div class="formula">平均數 Z 檢定：Z=(x̄-μ0)/(σ/√n)</div>
+        <div class="formula">平均數 t 檢定：t=(x̄-μ0)/(s/√n)，df=n-1</div>
+        <div class="formula">比例檢定：Z=(p̂-p0)/√[p0(1-p0)/n]</div>
+        <div class="formula">變異數檢定：χ²=(n-1)s²/σ0²</div>
+        <div class="formula">檢定力 Power = 1 - β</div>
+      </section>
+
+      <section class="example-box" id="examples">
+        <h2>範例解析</h2>
+        <article class="example-item">
+          <h3>範例 1：右尾平均數檢定</h3>
+          <p>若業者宣稱平均等待時間不超過 5 分鐘，研究者想檢查是否超過，設定 H0: μ≤5、H1: μ&gt;5，使用樣本平均數建立右尾檢定。</p>
+        </article>
+        <article class="example-item">
+          <h3>範例 2：比例檢定</h3>
+          <p>若標準不良率為 3%，抽查 500 件得到 25 件不良，p̂=0.05。可用 Z=(0.05-0.03)/√(0.03×0.97/500) 評估是否高於標準。</p>
+        </article>
+        <article class="example-item">
+          <h3>範例 3：變異數檢定</h3>
+          <p>若製程標準差不得超過 2，抽樣後得到 s=2.6，可用卡方統計量檢定母體變異數是否超過 4。</p>
+        </article>
+      </section>
+
+      <section class="practice-box" id="practice">
+        <h2>互動練習</h2>
+        <h3>尾端判斷</h3>
+        <p>若研究問題是「平均壽命是否低於 1,000 小時」，對立假設應屬於哪一種？</p>
+        <div class="quiz-options">
+          <label><input type="radio" name="q9" value="left"> 左尾檢定</label>
+          <label><input type="radio" name="q9" value="right"> 右尾檢定</label>
+          <label><input type="radio" name="q9" value="two"> 雙尾檢定</label>
+        </div>
+        <button onclick="checkQuiz('q9', 'left', 'q9-feedback')">檢查答案</button>
+        <p class="feedback" id="q9-feedback"></p>
+      </section>
+
+      <section class="practice-box" id="homework">
+        <h2>課堂練習</h2>
+        <ol>
+          <li>說明 H0 與 H1 的角色。</li>
+          <li>比較臨界值法與 p 值法。</li>
+          <li>寫出單一母體比例檢定的統計量。</li>
+          <li>說明型 I 錯誤與型 II 錯誤的差異。</li>
+        </ol>
+        <button data-toggle-answer="hw9-answer">顯示參考答案</button>
+        <div class="answer-box" id="hw9-answer">
+          <p>第 3 題：Z=(p̂-p0)/√[p0(1-p0)/n]。第 4 題：型 I 是錯拒真 H0，型 II 是未拒絕假的 H0。</p>
+        </div>
+      </section>
+
+      <section class="quiz-box" id="quiz">
+        <h2>自我測驗</h2>
+        <ul>
+          <li>能依研究問題寫出 H0 與 H1。</li>
+          <li>能判斷左尾、右尾與雙尾檢定。</li>
+          <li>能選用平均數、比例或變異數檢定。</li>
+          <li>能解釋 p 值、α、β 與檢定力。</li>
+        </ul>
+      </section>
+
+      <section class="summary-box" id="summary">
+        <h2>重點整理</h2>
+        <p>假說檢定不是證明 H0 為真，而是在控制錯誤風險下判斷樣本證據是否足以拒絕 H0。平均數、比例與變異數檢定使用不同分配，但都遵循設定假設、選擇統計量、判斷拒絕與解釋結論的流程。</p>
+      </section>
+
+      <nav class="footer-nav">
+        <a class="button" href="chapter-08-estimation.html">回第 8 章</a>
+        <a class="button" href="index.html">回首頁</a>
+        <a class="button" href="chapter-10-two-sample-hypothesis.html">前往第 10 章</a>
+      </nav>
+    </main>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/quiz.js"></script>
+</body>
+</html>
