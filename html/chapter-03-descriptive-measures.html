@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第 3 章 統計測量數 | 統計學互動式 HTML 教材</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="topbar">
+      <a class="brand" href="index.html">統計學互動式 HTML 教材</a>
+      <nav class="topnav" aria-label="主要導覽">
+        <a href="index.html">首頁</a>
+        <button type="button" onclick="toggleSidebar('lesson-layout')">顯示/隱藏項目</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="layout" id="lesson-layout">
+    <aside class="sidebar">
+      <h2>第 3 章</h2>
+      <a href="#objectives">學習目標</a>
+      <a href="#map">本章地圖</a>
+      <a href="#concepts">核心內容</a>
+      <a href="#terms">名詞解釋</a>
+      <a href="#formula">公式說明</a>
+      <a href="#examples">範例解析</a>
+      <a href="#practice">互動練習</a>
+      <a href="#homework">課堂練習</a>
+      <a href="#quiz">自我測驗</a>
+      <a href="#summary">重點整理</a>
+    </aside>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Chapter 3</p>
+        <h1>統計測量數</h1>
+        <p>統計測量數能把資料的中心、位置、分散程度與形狀轉成可比較的數字。本章練習如何用少數指標描述一組資料，同時避免只看單一數字造成誤判。</p>
+      </section>
+
+      <section class="lesson-objectives" id="objectives">
+        <h2>學習目標</h2>
+        <ol>
+          <li>分辨平均數、中位數與眾數的用途。</li>
+          <li>使用四分位數與百分位數描述資料位置。</li>
+          <li>計算全距、四分位距、變異數、標準差與變異係數。</li>
+          <li>理解柴比氏定理、經驗法則、偏度、峰度與相關係數。</li>
+        </ol>
+      </section>
+
+      <section class="chapter-map" id="map">
+        <h2>本章地圖</h2>
+        <p>本章依序回答四個問題：資料中心在哪裡、某筆資料位於整體哪個位置、資料散得多開，以及資料形狀與兩變數關係如何。</p>
+      </section>
+
+      <section class="concept-box" id="concepts">
+        <h2>核心內容</h2>
+        <h3>3-1 中央趨勢的衡量</h3>
+        <p>平均數是所有資料值的平衡點，會用到每一筆資料；中位數是排序後位於中間的位置，不易受極端值影響；眾數是出現次數最多的值或類別，適合血型、品牌、科系等類別資料。</p>
+        <p>當資料分布大致對稱時，平均數通常能代表典型水準。若資料有明顯極端值，例如薪資、房價、等待時間，中位數常比平均數更能反映一般狀況。</p>
+
+        <h3>3-2 位置的衡量</h3>
+        <p>四分位數把排序資料切成四等份，Q1、Q2、Q3 分別描述約 25%、50%、75% 的位置。百分位數把資料切成一百等份，可用來說明成績、身高或績效在整體中的相對排名。</p>
+
+        <h3>3-3 分散程度的衡量</h3>
+        <p>平均數相同的兩組資料，穩定度可能完全不同。全距只看最大值與最小值，四分位距看中間一半資料，標準差則衡量所有資料與平均數的典型距離。變異係數適合比較平均水準不同的資料。</p>
+
+        <h3>3-4 分配形狀與相關性</h3>
+        <p>柴比氏定理提供不需假設分配形狀的保守界線；經驗法則適用於鐘形分配。偏度說明資料是否拖尾，峰度說明分配尖平程度。相關係數則用來描述兩個數量變數線性關係的方向與強弱。</p>
+
+        <h3>3-5 中央趨勢的公式與性質</h3>
+        <p>算術平均數是所有資料在數線上的平衡點。母體平均數以 μ 表示，樣本平均數以 x̄ 表示。平均數有三個重要性質：各觀察值與平均數的差總和為 0；各觀察值與平均數差的平方和最小；它使用每一筆資料，因此資訊完整，但也容易受極端值影響。</p>
+        <p>中位數是排序後位於中央的數值。資料筆數為奇數時取正中間；資料筆數為偶數時取中間兩個數的平均。中位數的特色是各觀察值與中位數的絕對距離總和最小，而且不易受極端值影響，但不如平均數容易進行代數運算。</p>
+        <p>眾數是出現次數最多的數值或類別。眾數可能不只一個，也可能不存在；在血型、品牌、職業等類別資料中尤其有用。</p>
+        <table>
+          <thead><tr><th>量數</th><th>優點</th><th>限制</th><th>適用情境</th></tr></thead>
+          <tbody>
+            <tr><td>平均數<br><span class="muted">Mean</span></td><td>使用所有觀察值，便於代數運算。</td><td>容易受極端值影響。</td><td>資料大致對稱、沒有明顯離群值。</td></tr>
+            <tr><td>中位數<br><span class="muted">Median</span></td><td>不易受極端值影響。</td><td>不易做進一步代數推導。</td><td>薪資、房價、等待時間等偏態資料。</td></tr>
+            <tr><td>眾數<br><span class="muted">Mode</span></td><td>可用於類別資料。</td><td>可能有多個或沒有。</td><td>血型、品牌、投票選項。</td></tr>
+          </tbody>
+        </table>
+
+        <h3>3-6 位置與分散程度的細節</h3>
+        <p>四分位數用來描述排序資料的位置。Q1 表示約前 25% 的位置，Q2 即中位數，Q3 表示約前 75% 的位置。百分位數則能描述一筆資料的相對排名，例如某生成績在第 90 百分位數，代表約有 90% 的人成績低於或等於該生。</p>
+        <p>全距 R = Max - Min，只看最大與最小值，容易被極端值影響。四分位距 IQR = Q3 - Q1，只看中間 50% 資料，可修正部分極端值問題。平均絕對離差 MAD 衡量每筆資料與平均數的平均距離，但因絕對值在推論上較不方便，統計學常改用變異數與標準差。</p>
+        <p>變異數衡量平方離差的平均，值必大於等於 0；若變異數為 0，代表所有觀察值都相同。標準差是變異數開根號，單位回到原資料單位。變異係數 CV = 標準差 / 平均數，適合比較平均水準不同的兩組資料。</p>
+
+        <h3>3-7 偏度、峰度、共變異數與相關係數</h3>
+        <p>偏度衡量資料是否對稱。右偏表示少數大值把尾巴拉向右方，常見於所得或房價；左偏表示少數小值把尾巴拉向左方。峰度衡量資料集中於平均數附近的程度，常見分類包含高狹峰、常態峰與低闊峰。</p>
+        <p>兩變數關係可先用散佈圖觀察，再用共變異數與相關係數量化。共變異數為正，代表兩變數大致同向變動；共變異數為負，代表兩變數大致反向變動。由於共變異數受單位影響，通常會進一步標準化成相關係數。</p>
+        <p>皮爾生相關係數介於 -1 與 1 之間。越接近 1 表示高度正線性關係；越接近 -1 表示高度負線性關係；接近 0 表示沒有明顯線性關係。需注意，相關係數描述的是線性關係，不能單獨證明因果。</p>
+      </section>
+
+      <section class="concept-box" id="terms">
+        <h2>名詞解釋</h2>
+        <h3>3-1 中央趨勢</h3>
+        <ul class="term-list">
+          <li><strong>平均數 Mean：</strong>資料總和除以資料筆數。</li>
+          <li><strong>中位數 Median：</strong>排序後位於中央的數值。</li>
+          <li><strong>眾數 Mode：</strong>出現次數最多的數值或類別。</li>
+          <li><strong>加權平均數 Weighted mean：</strong>依權重計算的平均數。</li>
+        </ul>
+        <h3>3-2 位置</h3>
+        <ul class="term-list">
+          <li><strong>四分位數 Quartile：</strong>把排序資料切成四等份的位置量數。</li>
+          <li><strong>百分位數 Percentile：</strong>把排序資料切成一百等份的位置量數。</li>
+        </ul>
+        <h3>3-3 分散程度</h3>
+        <ul class="term-list">
+          <li><strong>全距 Range：</strong>最大值減最小值。</li>
+          <li><strong>四分位距 Interquartile range：</strong>Q3 減 Q1。</li>
+          <li><strong>變異數 Variance：</strong>平方離差的平均。</li>
+          <li><strong>標準差 Standard deviation：</strong>變異數開根號，單位與原資料相同。</li>
+          <li><strong>變異係數 Coefficient of variation：</strong>標準差除以平均數。</li>
+        </ul>
+        <h3>3-4 分配形狀與相關性</h3>
+        <ul class="term-list">
+          <li><strong>柴比氏定理 Chebyshev's theorem：</strong>至少有 1 - 1/k^2 的資料落在平均數正負 k 個標準差內。</li>
+          <li><strong>經驗法則 Empirical rule：</strong>鐘形分配約有 68%、95%、99.7% 資料落在 1、2、3 個標準差內。</li>
+          <li><strong>偏度 Skewness：</strong>衡量分配是否對稱。</li>
+          <li><strong>相關係數 Correlation coefficient：</strong>衡量兩個數量變數的線性關係。</li>
+        </ul>
+        <h3>3-5 中央趨勢性質</h3>
+        <ul class="term-list">
+          <li><strong>算術平均數 Arithmetic mean：</strong>所有觀察值加總後除以觀察值個數。</li>
+          <li><strong>平衡點 Balance point：</strong>平均數在數線上使離差總和為 0 的位置。</li>
+          <li><strong>極端值 Extreme value：</strong>遠離多數資料的觀察值，可能明顯影響平均數。</li>
+        </ul>
+        <h3>3-6 位置與分散細節</h3>
+        <ul class="term-list">
+          <li><strong>平均絕對離差 Mean absolute deviation：</strong>觀察值與平均數距離的平均。</li>
+          <li><strong>離差 Deviation：</strong>觀察值與中心量數之間的差距。</li>
+          <li><strong>平方離差 Squared deviation：</strong>離差平方後的值，用於變異數計算。</li>
+        </ul>
+        <h3>3-7 形狀與關係</h3>
+        <ul class="term-list">
+          <li><strong>峰度 Kurtosis：</strong>描述分配尖平程度的量數。</li>
+          <li><strong>共變異數 Covariance：</strong>衡量兩個數量變數共同變動方向的量數。</li>
+          <li><strong>皮爾生相關係數 Pearson correlation coefficient：</strong>標準化後的線性相關量數，介於 -1 與 1 之間。</li>
+        </ul>
+      </section>
+
+      <section class="formula-box" id="formula">
+        <h2>公式說明</h2>
+        <div class="formula">樣本平均數 x̄ = Σx / n</div>
+        <div class="formula">樣本變異數 s² = Σ(x - x̄)² / (n - 1)，樣本標準差 s = √s²</div>
+        <div class="formula">IQR = Q3 - Q1，CV = s / x̄</div>
+      </section>
+
+      <section class="example-box" id="examples">
+        <h2>範例解析</h2>
+        <article class="example-item">
+          <h3>範例 1：平均數與中位數</h3>
+          <p>資料 45、46、57、57、63、73、78、89 的平均數為 63.5，中位數為 (57 + 63) / 2 = 60。若最高分改為 100，平均數會上升，中位數不變，因此兩者反映的訊息不同。</p>
+        </article>
+        <article class="example-item">
+          <h3>範例 2：分散程度</h3>
+          <p>A 機器產量 28、33、45、51、63，B 機器產量 23、30、40、57、70。兩者平均數接近，但 B 的資料較散，應搭配標準差或全距比較穩定度。</p>
+        </article>
+        <article class="example-item">
+          <h3>範例 3：變異係數</h3>
+          <p>A 股票平均報酬 10.3%、標準差 6.08%，CV 約 0.59；B 股票平均報酬 5.08%、標準差 3.25%，CV 約 0.64。B 的絕對波動較小，但相對波動較大。</p>
+        </article>
+      </section>
+
+      <section class="practice-box" id="practice">
+        <h2>互動練習</h2>
+        <h3>輸入資料計算測量數</h3>
+        <textarea id="measure-input">45, 46, 57, 57, 63, 73, 78, 89</textarea>
+        <div class="tool-row">
+          <button onclick="calculateMean('measure-input', 'measure-output')">計算平均數</button>
+          <button onclick="calculateVariance('measure-input', 'measure-output')">計算變異數</button>
+          <button onclick="calculateFiveNumber('measure-input', 'measure-output')">計算位置量數</button>
+        </div>
+        <div class="answer-box is-visible" id="measure-output">請按上方按鈕開始計算。</div>
+        <h3>概念判斷</h3>
+        <p>若薪資資料包含少數極端高薪，描述一般員工典型薪資時通常較適合使用哪個量數？</p>
+        <div class="quiz-options">
+          <label><input type="radio" name="q3" value="mean"> 平均數</label>
+          <label><input type="radio" name="q3" value="median"> 中位數</label>
+          <label><input type="radio" name="q3" value="range"> 全距</label>
+        </div>
+        <button onclick="checkQuiz('q3', 'median', 'q3-feedback')">檢查答案</button>
+        <p class="feedback" id="q3-feedback"></p>
+      </section>
+
+      <section class="practice-box" id="homework">
+        <h2>課堂練習</h2>
+        <ol>
+          <li>說明平均數容易受極端值影響的原因。</li>
+          <li>資料 12、15、18、21、30、42 的全距與中位數為何？</li>
+          <li>比較標準差與變異係數的用途。</li>
+          <li>鐘形分配約有多少資料落在平均數正負 2 個標準差內？</li>
+        </ol>
+        <button data-toggle-answer="hw3-answer">顯示參考答案</button>
+        <div class="answer-box" id="hw3-answer">
+          <p>第 2 題：全距 30；中位數 19.5。第 4 題：約 95%。</p>
+        </div>
+      </section>
+
+      <section class="quiz-box" id="quiz">
+        <h2>自我測驗</h2>
+        <ul>
+          <li>能依資料情境選擇平均數、中位數或眾數。</li>
+          <li>能說明 Q1、Q2、Q3 與 IQR 的意義。</li>
+          <li>能用標準差與變異係數比較分散程度。</li>
+          <li>能分辨右偏、左偏與對稱分配。</li>
+        </ul>
+      </section>
+
+      <section class="summary-box" id="summary">
+        <h2>重點整理</h2>
+        <p>統計測量數把資料濃縮為中心、位置、分散、形狀與相關性等指標。實務判讀時應搭配多個量數，先看資料型態與分布，再決定哪個指標最能回答問題。</p>
+      </section>
+
+      <nav class="footer-nav">
+        <a class="button" href="chapter-02-statistical-charts.html">回第 2 章</a>
+        <a class="button" href="index.html">回首頁</a>
+        <a class="button" href="chapter-04-probability.html">前往第 4 章</a>
+      </nav>
+    </main>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/quiz.js"></script>
+  <script src="../assets/js/statistics-tools.js"></script>
+</body>
+</html>

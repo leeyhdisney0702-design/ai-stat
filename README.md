@@ -4,8 +4,8 @@
 
 ## 目前進度
 
-- 已完成：首頁、第 1 章、第 2 章、共用 CSS/JS、GitHub Pages workflow。
-- 暫不處理：第 3 章以後內容，除非使用者明確指定。
+- 已完成：首頁、第 1 章至第 7 章、共用 CSS/JS、GitHub Pages workflow。
+- 暫不處理：第 8 章以後內容，除非使用者明確指定。
 - 暫不加入：即時雙語字幕、麥克風權限、語音辨識或其他媒體權限功能。
 
 ## 正式網站結構
@@ -21,7 +21,12 @@ project-root/
 ├─ html/
 │  ├─ index.html
 │  ├─ chapter-01-introduction.html
-│  └─ chapter-02-statistical-charts.html
+│  ├─ chapter-02-statistical-charts.html
+│  ├─ chapter-03-descriptive-measures.html
+│  ├─ chapter-04-probability.html
+│  ├─ chapter-05-discrete-random-variables.html
+│  ├─ chapter-06-continuous-random-variables.html
+│  └─ chapter-07-sampling-distribution.html
 ├─ assets/
 │  ├─ css/style.css
 │  └─ js/
@@ -44,6 +49,10 @@ project-root/
 html/chapter-01-introduction.html
 html/chapter-02-statistical-charts.html
 html/chapter-03-descriptive-measures.html
+html/chapter-04-probability.html
+html/chapter-05-discrete-random-variables.html
+html/chapter-06-continuous-random-variables.html
+html/chapter-07-sampling-distribution.html
 ```
 
 不要使用中文檔名、空白、括號或不固定縮寫。

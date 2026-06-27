@@ -12,8 +12,7 @@
       <a class="brand" href="index.html">統計學互動式教材</a>
       <nav class="topnav" aria-label="主要導覽">
         <a href="index.html">首頁</a>
-        <a href="chapter-02-statistical-charts.html">下一章</a>
-        <button type="button" onclick="toggleSidebar('lesson-layout')">顯示/隱藏目錄</button>
+        <button type="button" onclick="toggleSidebar('lesson-layout')">顯示/隱藏項目</button>
       </nav>
     </div>
   </header>
@@ -98,6 +97,19 @@
         <p><strong>母體</strong>是研究者感興趣、想研究的所有元素所形成的集合。元素可以是人、物品、交易、事件或任何研究單位。若研究銘傳大學財金系學生對系所目標的了解程度，母體就是該系所有學生，每位學生是母體中的一個元素。</p>
         <p><strong>樣本</strong>是母體中的一部分元素。若因時間、人力或成本限制，研究者只隨機抽取 100 位學生做問卷，這 100 位學生就是樣本。統計學最主要的任務，就是用樣本提供的資訊推論母體。</p>
         <p><strong>有限母體</strong>指元素個數有限且可數，例如某校某系所有學生。<strong>無限母體</strong>指元素數量無限或難以計數，例如宇宙中所有恆星，或某位球員理論上未來所有可能打擊機會所代表的「打擊實力」。</p>
+
+        <h3>1-5 參數與統計量</h3>
+        <p><strong>母體參數</strong>是用來描述母體特徵的測量數，例如母體平均數、母體變異數、母體標準差、母體中位數、眾數與母體比例。若要了解全系學生對系所目標的了解程度，則「全系學生中了解程度超過 60 分的比例」就是母體比例，也是母體參數。</p>
+        <p><strong>樣本統計量</strong>是用來描述樣本特徵的測量數，例如樣本平均數、樣本變異數、樣本標準差、樣本比例。若抽查 100 位同學，其中 75 位了解程度高於 60 分，樣本比例就是 75%。這個 75% 不是母體的真正比例，而是用來推論母體比例的依據。</p>
+        <table>
+          <thead><tr><th>情境</th><th>母體</th><th>樣本</th><th>參數與統計量</th></tr></thead>
+          <tbody>
+            <tr><td>抽查咖啡容量</td><td>該品牌所有罐裝咖啡</td><td>抽出的 23 瓶</td><td>所有罐的平均容量是參數；23 瓶平均容量是統計量。</td></tr>
+            <tr><td>學生行為困擾調查</td><td>研究者關心的全體學生</td><td>實際受訪的 1,000 位學生</td><td>樣本中 4% 有傾向是統計量；若推論全體學生比例，則進入推論統計。</td></tr>
+            <tr><td>便利商店咖啡價格</td><td>所有便利商店的售價</td><td>被觀察的 4 家店</td><td>四家平均售價是統計量；所有便利商店平均售價是參數。</td></tr>
+          </tbody>
+        </table>
+        <p class="source-note">判斷敘述統計或推論統計時，可先問：「這句話只描述已觀察資料，還是把樣本結果推到更大的母體？」前者是敘述統計，後者是推論統計。</p>
       </section>
 
       <section class="concept-box" id="terms">
@@ -125,6 +137,12 @@
           <li><strong>樣本 Sample：</strong>從母體中選出的部分對象。實務上常用樣本資料代表母體資訊。</li>
           <li><strong>母體參數 Parameter：</strong>描述母體特徵的數值，例如母體平均數、母體比例、母體標準差。通常未知，需要估計。</li>
           <li><strong>樣本統計量 Statistic：</strong>由樣本資料算出的數值，例如樣本平均數、樣本比例。它是推論母體參數的重要依據。</li>
+        </ul>
+        <h3>1-5 參數與統計量</h3>
+        <ul class="term-list">
+          <li><strong>母體比例 Population proportion：</strong>母體中符合某條件的元素比例。</li>
+          <li><strong>樣本比例 Sample proportion：</strong>樣本中符合某條件的元素比例，常用來估計母體比例。</li>
+          <li><strong>估計 Estimation：</strong>使用樣本統計量推測未知母體參數的過程。</li>
         </ul>
       </section>
 

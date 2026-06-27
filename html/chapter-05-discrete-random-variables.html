@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第 5 章 間斷隨機變數及其機率分配 | 統計學互動式 HTML 教材</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="topbar">
+      <a class="brand" href="index.html">統計學互動式 HTML 教材</a>
+      <nav class="topnav" aria-label="主要導覽">
+        <a href="index.html">首頁</a>
+        <button type="button" onclick="toggleSidebar('lesson-layout')">顯示/隱藏項目</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="layout" id="lesson-layout">
+    <aside class="sidebar">
+      <h2>第 5 章</h2>
+      <a href="#objectives">學習目標</a>
+      <a href="#map">本章地圖</a>
+      <a href="#concepts">核心內容</a>
+      <a href="#terms">名詞解釋</a>
+      <a href="#formula">公式說明</a>
+      <a href="#examples">範例解析</a>
+      <a href="#practice">互動練習</a>
+      <a href="#homework">課堂練習</a>
+      <a href="#quiz">自我測驗</a>
+      <a href="#summary">重點整理</a>
+    </aside>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Chapter 5</p>
+        <h1>間斷隨機變數及其機率分配</h1>
+        <p>隨機變數把隨機實驗的結果轉成數值。當可能值是有限或可數時，就屬於間斷隨機變數。本章介紹機率分配、期望值、變異數，以及二項、超幾何與波松分配。</p>
+      </section>
+
+      <section class="lesson-objectives" id="objectives">
+        <h2>學習目標</h2>
+        <ol>
+          <li>理解隨機變數與機率質量函數。</li>
+          <li>計算間斷隨機變數的期望值與變異數。</li>
+          <li>辨認伯努力試驗、二項分配、超幾何分配與波松分配。</li>
+          <li>分辨抽出放回與抽出不放回對分配的影響。</li>
+        </ol>
+      </section>
+
+      <section class="chapter-map" id="map">
+        <h2>本章地圖</h2>
+        <p>本章先說明如何把事件結果數值化，再討論機率如何分配在各可能值上。接著介紹三個常見模型：二項分配處理固定次數的成敗試驗，超幾何分配處理有限母體不放回抽樣，波松分配處理事件發生次數。</p>
+      </section>
+
+      <section class="concept-box" id="concepts">
+        <h2>核心內容</h2>
+        <h3>5-1 隨機變數的意義與種類</h3>
+        <p>隨機變數是把樣本點對應到實數的函數。例如丟 3 次硬幣，若 X 表示正面次數，X 可能是 0、1、2、3。每個可能值對應的機率形成機率分配。</p>
+
+        <h3>5-2 間斷隨機變數的機率分配</h3>
+        <p>間斷隨機變數的機率以機率質量函數表示。所有可能值的機率必須大於等於 0，且總和等於 1。期望值是長期平均結果，變異數衡量結果相對期望值的波動。</p>
+
+        <h3>5-3 二項式分配</h3>
+        <p>若試驗次數固定、每次只有成功或失敗、成功機率固定且各次試驗獨立，成功次數 X 服從二項分配。投籃命中次數、抽驗瑕疵品數都常用此模型。</p>
+
+        <h3>5-4 超幾何分配與波松分配</h3>
+        <p>超幾何分配處理有限母體中抽出不放回的成功次數。波松分配描述單位時間或空間內事件發生次數，例如每週車禍次數、每頁錯字數、每 10 分鐘提款人數。</p>
+
+        <h3>5-5 機率質量函數與累積分配函數</h3>
+        <p>間斷隨機變數的分配可以用表格或函數列出。例如 X 表示一天內銷售的電視機台數，可能值為 0、1、2、3、4，若每個值都有對應機率，這張表就是機率分配。判斷是否為合法分配時，要檢查每個機率都介於 0 與 1 之間，且全部機率加總為 1。</p>
+        <p>累積分配函數 F(x)=P(X≤x) 表示 X 不超過某個值的機率。它會隨 x 增加而不下降，且可由機率質量函數逐步累加而來。若要由累積分配函數找出單點機率，可用相鄰累積機率相減，例如 P(X=3)=F(3)-F(2)。</p>
+
+        <h3>5-6 期望值、變異數與線性轉換</h3>
+        <p>期望值不是一次實驗必然出現的結果，而是長期重複實驗後的平均位置。若 X 的可能值為 x，機率為 f(x)，則 E(X)=Σxf(x)。變異數衡量各可能值離期望值的平均平方距離，標準差則把單位拉回原變數單位，較容易解讀。</p>
+        <p>若新的變數由 Y=aX+b 形成，例如銷售台數 X 轉成營收或利潤，則 E(Y)=aE(X)+b，Var(Y)=a²Var(X)。這個性質常用在把隨機變數轉成金額、分數或成本時。</p>
+
+        <h3>5-7 常見間斷分配的判斷</h3>
+        <p>伯努力分配描述單次成敗試驗；二項分配描述固定 n 次獨立伯努力試驗中的成功次數。若母體有限且抽出後不放回，成功機率會隨抽樣改變，此時應使用超幾何分配，而不是二項分配。</p>
+        <p>波松分配適合描述固定時間、面積或空間中事件發生次數，前提是事件平均發生率穩定，且不同區間的發生情況可視為獨立。當二項分配的 n 很大、p 很小，且 np 適中時，也常用波松分配近似二項分配。</p>
+      </section>
+
+      <section class="concept-box" id="terms">
+        <h2>名詞解釋</h2>
+        <h3>5-1 隨機變數</h3>
+        <ul class="term-list">
+          <li><strong>隨機變數 Random variable：</strong>把隨機實驗結果轉成數值的函數。</li>
+          <li><strong>間斷隨機變數 Discrete random variable：</strong>可能值為有限或可數的隨機變數。</li>
+        </ul>
+        <h3>5-2 機率分配</h3>
+        <ul class="term-list">
+          <li><strong>機率質量函數 Probability mass function：</strong>列出每個可能值及其機率的函數。</li>
+          <li><strong>期望值 Expected value：</strong>隨機變數的長期平均。</li>
+          <li><strong>變異數 Variance：</strong>隨機變數相對期望值的平均平方偏離。</li>
+        </ul>
+        <h3>5-3 二項式分配</h3>
+        <ul class="term-list">
+          <li><strong>伯努力試驗 Bernoulli trial：</strong>只有成功與失敗兩種結果的單次試驗。</li>
+          <li><strong>二項分配 Binomial distribution：</strong>固定 n 次獨立伯努力試驗中的成功次數分配。</li>
+        </ul>
+        <h3>5-4 超幾何分配與波松分配</h3>
+        <ul class="term-list">
+          <li><strong>超幾何分配 Hypergeometric distribution：</strong>有限母體不放回抽樣的成功次數分配。</li>
+          <li><strong>有限母體校正因子 Finite population correction factor：</strong>不放回抽樣時修正變異數的因子。</li>
+          <li><strong>波松分配 Poisson distribution：</strong>描述固定區間內事件發生次數的分配。</li>
+        </ul>
+        <h3>5-5 分配函數</h3>
+        <ul class="term-list">
+          <li><strong>累積分配函數 Cumulative distribution function：</strong>表示 P(X≤x) 的函數。</li>
+          <li><strong>合法機率分配 Valid probability distribution：</strong>所有機率非負且總和為 1 的分配。</li>
+        </ul>
+        <h3>5-6 分配特徵</h3>
+        <ul class="term-list">
+          <li><strong>線性轉換 Linear transformation：</strong>把 X 轉成 aX+b 的變數轉換。</li>
+          <li><strong>標準差 Standard deviation：</strong>變異數的平方根，單位與原變數相同。</li>
+        </ul>
+        <h3>5-7 分配選擇</h3>
+        <ul class="term-list">
+          <li><strong>放回抽樣 Sampling with replacement：</strong>每次抽出後放回，成功機率可視為固定。</li>
+          <li><strong>不放回抽樣 Sampling without replacement：</strong>每次抽出後不放回，成功機率會隨抽樣改變。</li>
+          <li><strong>波松近似 Poisson approximation：</strong>在 n 大、p 小時用波松分配近似二項分配。</li>
+        </ul>
+      </section>
+
+      <section class="formula-box" id="formula">
+        <h2>公式說明</h2>
+        <div class="formula">E(X) = Σ x f(x)，Var(X) = E(X²) - [E(X)]²</div>
+        <div class="formula">二項分配：P(X=x)=C(n,x)p^x(1-p)^(n-x)</div>
+        <div class="formula">若 X~Binomial(n,p)，E(X)=np，Var(X)=np(1-p)</div>
+        <div class="formula">波松分配：P(X=x)=e^-λ λ^x / x!，E(X)=Var(X)=λ</div>
+      </section>
+
+      <section class="example-box" id="examples">
+        <h2>範例解析</h2>
+        <article class="example-item">
+          <h3>範例 1：二項分配</h3>
+          <p>某選手命中率 0.65，投 20 球，命中 15 球的機率為 C(20,15)(0.65)^15(0.35)^5。此情境符合固定次數、成功機率固定與獨立試驗。</p>
+        </article>
+        <article class="example-item">
+          <h3>範例 2：超幾何分配</h3>
+          <p>8 位候選人中有 3 男 5 女，選 3 人且不放回。選到 2 男 1 女的機率為 C(3,2)C(5,1)/C(8,3)。</p>
+        </article>
+        <article class="example-item">
+          <h3>範例 3：波松分配</h3>
+          <p>某提款機 10 分鐘平均 4 人提款，10 分鐘內剛好 5 人提款的機率為 e^-4 4^5 / 5!。若改成 30 分鐘，λ 要同步放大為 12。</p>
+        </article>
+      </section>
+
+      <section class="practice-box" id="practice">
+        <h2>互動練習</h2>
+        <h3>二項分配計算器</h3>
+        <div class="tool-row">
+          <label>n <input id="binom-n" type="number" value="20"></label>
+          <label>p <input id="binom-p" type="number" step="0.01" value="0.65"></label>
+          <label>x <input id="binom-x" type="number" value="15"></label>
+        </div>
+        <button onclick="calculateBinomial('binom-n','binom-p','binom-x','binom-output')">計算 P(X=x)</button>
+        <div class="answer-box is-visible" id="binom-output">請按計算。</div>
+        <h3>模型判斷</h3>
+        <p>從 10 支籤中有 2 支外島籤，10 人依序抽籤且不放回。描述前 5 人抽中外島籤數，應使用哪個分配？</p>
+        <div class="quiz-options">
+          <label><input type="radio" name="q5" value="binomial"> 二項分配</label>
+          <label><input type="radio" name="q5" value="hypergeometric"> 超幾何分配</label>
+          <label><input type="radio" name="q5" value="poisson"> 波松分配</label>
+        </div>
+        <button onclick="checkQuiz('q5', 'hypergeometric', 'q5-feedback')">檢查答案</button>
+        <p class="feedback" id="q5-feedback"></p>
+      </section>
+
+      <section class="practice-box" id="homework">
+        <h2>課堂練習</h2>
+        <ol>
+          <li>說明隨機變數和事件的差異。</li>
+          <li>某產品瑕疵率 3%，抽 500 件，寫出恰有 x 件瑕疵品的機率式。</li>
+          <li>說明二項分配與超幾何分配的差異。</li>
+          <li>某路段每週平均 1.2 次車禍，求一週至少一次車禍的機率式。</li>
+        </ol>
+        <button data-toggle-answer="hw5-answer">顯示參考答案</button>
+        <div class="answer-box" id="hw5-answer">
+          <p>第 2 題：C(500,x)(0.03)^x(0.97)^(500-x)。第 4 題：1 - e^-1.2。</p>
+        </div>
+      </section>
+
+      <section class="quiz-box" id="quiz">
+        <h2>自我測驗</h2>
+        <ul>
+          <li>能確認隨機變數的可能值。</li>
+          <li>能由機率質量函數計算期望值。</li>
+          <li>能辨認二項、超幾何與波松分配情境。</li>
+          <li>能正確調整波松分配的時間或空間區間。</li>
+        </ul>
+      </section>
+
+      <section class="summary-box" id="summary">
+        <h2>重點整理</h2>
+        <p>間斷隨機變數把不確定結果轉成可計算的數值。期望值描述長期平均，變異數描述波動。二項、超幾何與波松分配對應不同資料產生機制，使用前必須先確認試驗條件。</p>
+      </section>
+
+      <nav class="footer-nav">
+        <a class="button" href="chapter-04-probability.html">回第 4 章</a>
+        <a class="button" href="index.html">回首頁</a>
+        <a class="button" href="chapter-06-continuous-random-variables.html">前往第 6 章</a>
+      </nav>
+    </main>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/quiz.js"></script>
+  <script src="../assets/js/statistics-tools.js"></script>
+</body>
+</html>

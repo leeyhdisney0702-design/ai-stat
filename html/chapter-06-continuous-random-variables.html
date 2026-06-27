@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>第 6 章 連續隨機變數及其機率分配 | 統計學互動式 HTML 教材</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="topbar">
+      <a class="brand" href="index.html">統計學互動式 HTML 教材</a>
+      <nav class="topnav" aria-label="主要導覽">
+        <a href="index.html">首頁</a>
+        <button type="button" onclick="toggleSidebar('lesson-layout')">顯示/隱藏項目</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="layout" id="lesson-layout">
+    <aside class="sidebar">
+      <h2>第 6 章</h2>
+      <a href="#objectives">學習目標</a>
+      <a href="#map">本章地圖</a>
+      <a href="#concepts">核心內容</a>
+      <a href="#terms">名詞解釋</a>
+      <a href="#formula">公式說明</a>
+      <a href="#examples">範例解析</a>
+      <a href="#practice">互動練習</a>
+      <a href="#homework">課堂練習</a>
+      <a href="#quiz">自我測驗</a>
+      <a href="#summary">重點整理</a>
+    </aside>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Chapter 6</p>
+        <h1>連續隨機變數及其機率分配</h1>
+        <p>連續隨機變數的可能值不可數，例如身高、壽命、等待時間與價格。這類變數的機率不是落在單一點，而是落在某個區間的曲線下面積。</p>
+      </section>
+
+      <section class="lesson-objectives" id="objectives">
+        <h2>學習目標</h2>
+        <ol>
+          <li>理解機率密度函數與累積分配函數。</li>
+          <li>使用均勻分配處理區間內等可能的連續結果。</li>
+          <li>使用常態分配與標準化計算區間機率。</li>
+          <li>用指數分配描述等待時間與無記憶性。</li>
+        </ol>
+      </section>
+
+      <section class="chapter-map" id="map">
+        <h2>本章地圖</h2>
+        <p>本章先建立連續機率的面積觀念，再介紹三個常見分配：均勻分配代表區間內等密度，常態分配代表鐘形集中，指數分配代表事件等待時間。</p>
+      </section>
+
+      <section class="concept-box" id="concepts">
+        <h2>核心內容</h2>
+        <h3>6-1 連續隨機變數的機率分配</h3>
+        <p>連續隨機變數取某個精確值的機率為 0，因此我們關心的是 P(a ≤ X ≤ b)。機率密度函數 f(x) 的總面積為 1，區間機率等於該區間下的面積。</p>
+
+        <h3>6-2 均勻分配</h3>
+        <p>若在區間 (a,b) 內每個位置的密度相同，X 服從均勻分配。等車時間、隨機到站時間等問題常可用均勻分配作為簡化模型。</p>
+
+        <h3>6-3 常態分配</h3>
+        <p>常態分配是對稱的鐘形分配，由平均數 μ 與變異數 σ² 決定。透過 Z=(X-μ)/σ 可轉成標準常態分配，方便查表或用工具計算機率。</p>
+
+        <h3>6-4 指數分配</h3>
+        <p>指數分配描述下一次事件發生前的等待時間，例如故障間隔、客戶到達間隔與上菜等待時間。若事件次數服從波松分配，兩次事件之間的時間常可用指數分配描述。</p>
+
+        <h3>6-5 密度、累積分配與連續型期望值</h3>
+        <p>連續型機率不是曲線高度本身，而是曲線下的面積。機率密度函數必須滿足 f(x)≥0，且整條曲線下面積為 1。因為單一點沒有寬度，所以 P(X=a)=0；計算時通常關心 P(a&lt;X&lt;b)、P(X≤b) 或 P(X≥a)。</p>
+        <p>累積分配函數 F(x)=P(X≤x) 可用來表示左側累積面積。若已知 F(x)，區間機率可用 F(b)-F(a) 取得。連續型期望值是所有可能位置按密度加權後的中心，變異數則衡量資料圍繞中心的散布程度。</p>
+
+        <h3>6-6 均勻分配的面積觀念</h3>
+        <p>若 X 在 a 到 b 之間均勻分配，密度為 1/(b-a)，區間長度越長，機率越大。例如班車在 9:20 到 9:40 間均勻到站，9:28 到站後能在 9:40 前搭上車的機率，就是剩餘 12 分鐘占整個 20 分鐘區間的比例。</p>
+        <p>均勻分配的平均數位於區間中點，變異數為 (b-a)²/12。當題目只說某事件在一段時間內等可能發生，且沒有更細的到達模式資訊時，均勻分配常是第一個可用模型。</p>
+
+        <h3>6-7 常態分配、標準化與常態性判斷</h3>
+        <p>常態分配由 μ 與 σ 決定位置與散布。曲線以 μ 為中心左右對稱，平均數、中位數與眾數相同；約 68% 的資料落在 μ±1σ，約 95% 落在 μ±2σ，約 99.7% 落在 μ±3σ。這些比例可用來快速檢查資料是否接近常態。</p>
+        <p>標準化把不同平均數與標準差的常態變數轉成標準常態變數 Z=(X-μ)/σ。計算 P(a&lt;X&lt;b) 時，先把 a、b 轉成 z 值，再使用標準常態表或計算工具求面積。若資料點在常態機率圖上大致呈直線，通常代表常態假設較合理。</p>
+
+        <h3>6-8 指數分配與波松分配的關係</h3>
+        <p>若固定期間內事件發生次數可用波松分配描述，則下一次事件前的等待時間常可用指數分配描述。指數分配的參數 λ 是平均發生率，E(X)=1/λ，Var(X)=1/λ²，且 P(X&gt;x)=e^-λx。</p>
+        <p>指數分配具有無記憶性：在已經等待一段時間後，未來還要等多久的機率分配不受過去等待時間影響。這項性質適合描述隨機到達或隨機故障，但若事件有明顯老化、排程或尖峰效應，就不宜直接套用。</p>
+      </section>
+
+      <section class="concept-box" id="terms">
+        <h2>名詞解釋</h2>
+        <h3>6-1 連續機率</h3>
+        <ul class="term-list">
+          <li><strong>連續隨機變數 Continuous random variable：</strong>可能值不可數且通常落在區間內的變數。</li>
+          <li><strong>機率密度函數 Probability density function：</strong>以曲線下面積表示區間機率的函數。</li>
+          <li><strong>累積分配函數 Cumulative distribution function：</strong>F(x)=P(X≤x)。</li>
+        </ul>
+        <h3>6-2 均勻分配</h3>
+        <ul class="term-list">
+          <li><strong>均勻分配 Uniform distribution：</strong>區間內機率密度相同的連續分配。</li>
+        </ul>
+        <h3>6-3 常態分配</h3>
+        <ul class="term-list">
+          <li><strong>常態分配 Normal distribution：</strong>對稱鐘形分配。</li>
+          <li><strong>標準常態分配 Standard normal distribution：</strong>平均數 0、變異數 1 的常態分配。</li>
+          <li><strong>標準化 Standardization：</strong>把 X 轉成 Z=(X-μ)/σ。</li>
+        </ul>
+        <h3>6-4 指數分配</h3>
+        <ul class="term-list">
+          <li><strong>指數分配 Exponential distribution：</strong>描述等待時間的連續分配。</li>
+          <li><strong>無記憶性 Memoryless property：</strong>已等待多久不改變未來等待時間的分配。</li>
+        </ul>
+        <h3>6-5 連續分配函數</h3>
+        <ul class="term-list">
+          <li><strong>區間機率 Interval probability：</strong>連續變數落在某段區間內的機率。</li>
+          <li><strong>左側累積面積 Left-tail area：</strong>累積分配函數 F(x) 所代表的面積。</li>
+        </ul>
+        <h3>6-6 均勻分配細節</h3>
+        <ul class="term-list">
+          <li><strong>等密度 Equal density：</strong>區間內每個位置的機率密度相同。</li>
+          <li><strong>區間長度 Interval length：</strong>均勻分配中決定機率大小的主要因素。</li>
+        </ul>
+        <h3>6-7 常態分配細節</h3>
+        <ul class="term-list">
+          <li><strong>經驗法則 Empirical rule：</strong>常態分配下約 68%、95%、99.7% 的資料落在一、二、三個標準差內。</li>
+          <li><strong>常態機率圖 Normal probability plot：</strong>用來檢查資料是否近似常態的圖形工具。</li>
+        </ul>
+        <h3>6-8 指數與波松</h3>
+        <ul class="term-list">
+          <li><strong>發生率 Rate：</strong>單位時間或空間內事件平均發生次數。</li>
+          <li><strong>存活函數 Survival function：</strong>P(X&gt;x)，表示等待時間超過 x 的機率。</li>
+        </ul>
+      </section>
+
+      <section class="formula-box" id="formula">
+        <h2>公式說明</h2>
+        <div class="formula">P(a≤X≤b)=∫a^b f(x)dx</div>
+        <div class="formula">若 X~U(a,b)，E(X)=(a+b)/2，Var(X)=(b-a)²/12</div>
+        <div class="formula">標準化：Z=(X-μ)/σ</div>
+        <div class="formula">若 X~Exp(λ)，f(x)=λe^-λx，E(X)=1/λ，P(X>x)=e^-λx</div>
+      </section>
+
+      <section class="example-box" id="examples">
+        <h2>範例解析</h2>
+        <article class="example-item">
+          <h3>範例 1：均勻分配等車</h3>
+          <p>班車在 9:20 到 9:40 間均勻發車。若乘客 9:28 到達，能搭上的機率為 (40-28)/(40-20)=0.6。</p>
+        </article>
+        <article class="example-item">
+          <h3>範例 2：常態分配標準化</h3>
+          <p>若手機使用時間 X~N(50,15²)，使用 30 到 70 小時的機率為 P((30-50)/15 ≤ Z ≤ (70-50)/15)，即 P(-1.33≤Z≤1.33)。</p>
+        </article>
+        <article class="example-item">
+          <h3>範例 3：指數分配等待時間</h3>
+          <p>若平均等待時間為 20 分鐘，λ=1/20=0.05。10 分鐘內等到的機率為 1-e^(-0.05×10)。</p>
+        </article>
+      </section>
+
+      <section class="practice-box" id="practice">
+        <h2>互動練習</h2>
+        <h3>均勻分配區間機率</h3>
+        <div class="tool-row">
+          <label>a <input id="uniform-a" type="number" value="20"></label>
+          <label>b <input id="uniform-b" type="number" value="40"></label>
+          <label>c <input id="uniform-c" type="number" value="28"></label>
+          <label>d <input id="uniform-d" type="number" value="40"></label>
+        </div>
+        <button onclick="calculateUniform('uniform-a','uniform-b','uniform-c','uniform-d','uniform-output')">計算 P(c≤X≤d)</button>
+        <div class="answer-box is-visible" id="uniform-output">請按計算。</div>
+        <h3>標準化練習</h3>
+        <div class="tool-row">
+          <label>x <input id="z-x" type="number" value="70"></label>
+          <label>μ <input id="z-mu" type="number" value="50"></label>
+          <label>σ <input id="z-sigma" type="number" value="15"></label>
+        </div>
+        <button onclick="calculateZScore('z-x','z-mu','z-sigma','z-output')">計算 Z 值</button>
+        <div class="answer-box is-visible" id="z-output">請按計算。</div>
+      </section>
+
+      <section class="practice-box" id="homework">
+        <h2>課堂練習</h2>
+        <ol>
+          <li>說明連續隨機變數取單一點機率為 0 的原因。</li>
+          <li>若 X~U(2,10)，求 E(X)、Var(X)、P(3&lt;X&lt;9)。</li>
+          <li>若 X~N(500,100²)，求 X=650 對應的 Z 值。</li>
+          <li>若平均每 5 天接到一次投訴電話，寫出 7 天後才接到下一通的機率式。</li>
+        </ol>
+        <button data-toggle-answer="hw6-answer">顯示參考答案</button>
+        <div class="answer-box" id="hw6-answer">
+          <p>第 2 題：E=6，Var=64/12，P=6/8=0.75。第 3 題：Z=1.5。第 4 題：e^(-(1/5)×7)。</p>
+        </div>
+      </section>
+
+      <section class="quiz-box" id="quiz">
+        <h2>自我測驗</h2>
+        <ul>
+          <li>能把密度與機率面積區分清楚。</li>
+          <li>能使用均勻分配計算區間比例。</li>
+          <li>能進行常態分配標準化。</li>
+          <li>能說明指數分配與波松分配的關係。</li>
+        </ul>
+      </section>
+
+      <section class="summary-box" id="summary">
+        <h2>重點整理</h2>
+        <p>連續機率以區間面積表示。均勻分配適合等可能區間，常態分配適合鐘形資料並可標準化，指數分配適合等待時間。選擇模型前，先確認變數是時間、距離、分數或次數。</p>
+      </section>
+
+      <nav class="footer-nav">
+        <a class="button" href="chapter-05-discrete-random-variables.html">回第 5 章</a>
+        <a class="button" href="index.html">回首頁</a>
+        <a class="button" href="chapter-07-sampling-distribution.html">前往第 7 章</a>
+      </nav>
+    </main>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/quiz.js"></script>
+  <script src="../assets/js/statistics-tools.js"></script>
+</body>
+</html>
